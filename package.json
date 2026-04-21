@@ -1,0 +1,12 @@
+{
+  "name": "moss",
+  "version": "0.1.0",
+  "description": "A nature-themed dynamically typed programming language",
+  "type": "module",
+  "author": "Ethan Wong",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ethxnwzng/moss"
+  }
+}
