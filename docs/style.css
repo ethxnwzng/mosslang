@@ -337,56 +337,21 @@ pre code {
   font-style: italic;
 }
 
-/* ─── Why Moss section ───────────────────────────── */
-.why-grid {
+/* ─── Guide two-column code pair ─────────────────── */
+.guide-pair {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: start;
+  gap: 1.5rem;
+  margin-top: 0.25rem;
 }
 
-.why-text p {
-  font-size: 1.08rem;
-  color: var(--t-mid);
-  line-height: 1.8;
-}
-
-.why-callout {
-  background: var(--c-dark);
-  border-radius: 16px;
-  padding: 1.75rem 2rem;
-  color: var(--c-pale);
-}
-
-.callout-label {
-  font-size: 0.74rem;
+.guide-label {
+  font-size: 0.76rem;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   color: var(--c-mint);
-  margin-bottom: 0.3rem;
-}
-
-.callout-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--c-pale);
-  margin-bottom: 0.75rem;
-}
-
-.callout-body {
-  font-size: 0.95rem;
-  color: var(--c-pale);
-  opacity: 0.82;
-  line-height: 1.7;
-}
-
-.callout-body strong { color: var(--c-mint); opacity: 1; }
-.callout-body code   { color: var(--syn-starter); font-size: 0.9rem; }
-
-.why-callout pre {
-  font-size: 0.86rem;
-  padding: 1rem 1.25rem;
-  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  font-family: 'EB Garamond', serif;
 }
 
 /* ─── Compiled output ────────────────────────────── */
@@ -398,49 +363,51 @@ pre code {
 }
 
 .compile-card {
-  background: var(--c-cream);
-  border: 1px solid rgba(64,145,108,0.14);
+  background: var(--c-white);
+  border: 1px solid rgba(64,145,108,0.18);
   border-radius: 14px;
   overflow: hidden;
+  box-shadow: 0 2px 12px rgba(27,67,50,0.06);
 }
 
 .compile-label {
-  background: var(--c-pale);
-  padding: 0.55rem 1.25rem;
-  font-size: 0.82rem;
+  background: var(--c-dark);
+  padding: 0.6rem 1.25rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  color: var(--t-dark);
+  color: var(--c-pale);
   letter-spacing: 0.03em;
-  border-bottom: 1px solid rgba(64,145,108,0.14);
 }
 
-.compile-arrow { color: var(--c-moss); }
+.compile-arrow { color: var(--c-mint); }
 
 .compile-cols {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
-.compile-cols > div { padding: 0.75rem; }
-.compile-cols > div:first-child { border-right: 1px solid rgba(64,145,108,0.12); }
+.compile-cols > div { padding: 0.85rem; }
+.compile-cols > div:first-child {
+  border-right: 1px solid rgba(64,145,108,0.12);
+}
 
 .compile-sublabel {
   font-family: 'Courier New', monospace;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 0.4rem;
-  opacity: 0.7;
+  opacity: 0.65;
 }
 
 .compile-cols pre {
-  font-size: 0.8rem;
-  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  padding: 0.85rem 1rem;
   border-radius: 8px;
   margin: 0;
 }
 
-/* ─── Error cards ────────────────────────────────── */
+/* ─── Error cards (light, site palette) ─────────── */
 .error-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -449,44 +416,45 @@ pre code {
 }
 
 .error-card {
-  background: rgba(0,0,0,0.25);
-  border: 1px solid rgba(210,243,220,0.08);
+  background: var(--c-white);
+  border: 1px solid rgba(64,145,108,0.18);
   border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 2px 12px rgba(27,67,50,0.06);
 }
 
-.error-snippet pre {
+.error-card pre {
   border-radius: 0;
-  padding: 1rem 1.25rem;
-  font-size: 0.88rem;
-  background: rgba(0,0,0,0.3);
   margin: 0;
+  font-size: 0.88rem;
 }
 
 .error-msg {
-  padding: 0.75rem 1.25rem;
-  font-size: 0.88rem;
-  color: var(--c-mint);
+  padding: 0.7rem 1.1rem;
+  font-size: 0.9rem;
+  color: var(--t-dark);
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.55rem;
   flex-wrap: wrap;
   line-height: 1.5;
+  border-top: 1px solid rgba(64,145,108,0.12);
 }
 
 .error-msg code {
-  font-size: 0.84rem;
-  color: var(--syn-starter);
+  font-size: 0.85rem;
+  color: var(--c-moss);
+  font-family: 'Courier New', monospace;
 }
 
 .error-tag {
-  background: #c0392b;
-  color: white;
-  font-size: 0.7rem;
+  background: #b03020;
+  color: #fff;
+  font-size: 0.68rem;
   font-weight: 700;
-  padding: 0.15rem 0.5rem;
+  padding: 0.14rem 0.48rem;
   border-radius: 4px;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   font-family: 'Courier New', monospace;
   flex-shrink: 0;
 }
@@ -683,10 +651,10 @@ footer a:hover { text-decoration: underline; }
 
 /* ─── Responsive ─────────────────────────────────── */
 @media (max-width: 960px) {
-  .compare-grid    { grid-template-columns: 1fr; }
-  .why-grid        { grid-template-columns: 1fr; }
-  .compile-grid    { grid-template-columns: 1fr; }
-  .error-grid      { grid-template-columns: 1fr; }
+  .compare-grid  { grid-template-columns: 1fr; }
+  .compile-grid  { grid-template-columns: 1fr; }
+  .error-grid    { grid-template-columns: 1fr; }
+  .guide-pair    { grid-template-columns: 1fr; }
 
   .glossary-entry {
     grid-template-columns: 1fr;
@@ -705,5 +673,8 @@ footer a:hover { text-decoration: underline; }
   .kw-glossary { grid-template-columns: 1fr; }
   .kw-row { grid-template-columns: 100px 1fr; }
   .compile-cols { grid-template-columns: 1fr; }
-  .compile-cols > div:first-child { border-right: none; border-bottom: 1px solid rgba(64,145,108,0.12); }
+  .compile-cols > div:first-child {
+    border-right: none;
+    border-bottom: 1px solid rgba(64,145,108,0.12);
+  }
 }
