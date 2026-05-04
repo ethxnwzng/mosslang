@@ -33,16 +33,23 @@
   </div>
 </section>
 
-<!-- ── WHAT IS MOSS + KEYWORD GLOSSARY ──────────────────────────────────── -->
+<!-- ── INTRO ─────────────────────────────────────────────────────────────── -->
 <section class="section section--light">
   <div class="section-inner">
     <p class="section-eyebrow">The language</p>
     <h2 class="section-title">Code that reads like nature grows</h2>
     <p class="section-desc">
-      A dynamically typed scripting language that compiles to JavaScript.
-      Every keyword was chosen to feel alive — things <em>sprout</em>, functions <em>grow</em>, results <em>bloom</em>.
+      Graph problems are everywhere. Social networks find degrees of connection.
+      GPS apps compute shortest routes. Package managers resolve dependency chains.
+      Cloud platforms map network policies. Moss treats graphs as a core part of the language —
+      declare them in syntax, traverse them in one block, no boilerplate required.
     </p>
+  </div>
+</section>
 
+<!-- ── KEYWORD GLOSSARY ──────────────────────────────────────────────────── -->
+<section class="section section--pale" style="padding-top:0">
+  <div class="section-inner">
     <div class="kw-glossary">
       <div class="kw-group">
         <div class="kw-group-label" style="color:var(--syn-starter)">Starters — open or declare</div>
@@ -88,7 +95,7 @@
   <div class="section-inner wide">
     <p class="section-eyebrow">Reading Moss</p>
     <p class="section-desc">
-      Moss uses two keyword families and symbolic operators. Colors are consistent across the site.
+      Two keyword families and symbolic operators. Colors are consistent across the site.
     </p>
 
     <div class="legend">
@@ -121,11 +128,11 @@
 
     <div class="guide-pair">
       <div>
-        <p class="guide-label">Basics &amp; Fibonacci</p>
+        <h3 class="guide-heading">Basics &amp; Fibonacci</h3>
         <pre><code id="guide-basics-out"></code></pre>
       </div>
       <div>
-        <p class="guide-label">Prototypal inheritance</p>
+        <h3 class="guide-heading">Prototypal inheritance</h3>
         <pre><code id="guide-colony-out"></code></pre>
       </div>
     </div>
@@ -137,51 +144,39 @@
   <div class="section-inner wide">
     <p class="section-eyebrow">Under the hood</p>
     <h2 class="section-title">Moss compiles to clean JavaScript</h2>
-    <p class="section-desc">
-      Each construct maps directly to a JavaScript equivalent — no runtime required.
-    </p>
+    <p class="section-desc">Each construct maps directly to a JavaScript equivalent — no runtime required.</p>
 
     <div class="compile-grid">
 
       <div class="compile-card">
-        <div class="compile-label">Guard clause &nbsp;<span class="compile-arrow">→</span>&nbsp; if statement</div>
+        <div class="compile-label">Guard clause <span class="compile-arrow">→</span> if statement</div>
         <div class="compile-cols">
-          <div>
-            <div class="compile-sublabel ms-starter">Moss</div>
-            <pre><code id="c-guard-moss-out"></code></pre>
-          </div>
-          <div>
-            <div class="compile-sublabel js-kw">JavaScript</div>
-            <pre><code id="c-guard-js-out"></code></pre>
-          </div>
+          <div><div class="compile-sublabel ms-starter">Moss</div><pre><code id="c-guard-moss-out"></code></pre></div>
+          <div><div class="compile-sublabel js-kw">JavaScript</div><pre><code id="c-guard-js-out"></code></pre></div>
         </div>
       </div>
 
       <div class="compile-card">
-        <div class="compile-label">Pipeline &nbsp;<span class="compile-arrow">→</span>&nbsp; nested call</div>
+        <div class="compile-label">Pipeline <span class="compile-arrow">→</span> nested call</div>
         <div class="compile-cols">
-          <div>
-            <div class="compile-sublabel ms-starter">Moss</div>
-            <pre><code id="c-pipe-moss-out"></code></pre>
-          </div>
-          <div>
-            <div class="compile-sublabel js-kw">JavaScript</div>
-            <pre><code id="c-pipe-js-out"></code></pre>
-          </div>
+          <div><div class="compile-sublabel ms-starter">Moss</div><pre><code id="c-pipe-moss-out"></code></pre></div>
+          <div><div class="compile-sublabel js-kw">JavaScript</div><pre><code id="c-pipe-js-out"></code></pre></div>
         </div>
       </div>
 
       <div class="compile-card">
-        <div class="compile-label">Colony inheritance &nbsp;<span class="compile-arrow">→</span>&nbsp; Object.create</div>
+        <div class="compile-label">Colony inheritance <span class="compile-arrow">→</span> Object.create</div>
         <div class="compile-cols">
-          <div>
-            <div class="compile-sublabel ms-starter">Moss</div>
-            <pre><code id="c-colony-moss-out"></code></pre>
-          </div>
-          <div>
-            <div class="compile-sublabel js-kw">JavaScript</div>
-            <pre><code id="c-colony-js-out"></code></pre>
-          </div>
+          <div><div class="compile-sublabel ms-starter">Moss</div><pre><code id="c-colony-moss-out"></code></pre></div>
+          <div><div class="compile-sublabel js-kw">JavaScript</div><pre><code id="c-colony-js-out"></code></pre></div>
+        </div>
+      </div>
+
+      <div class="compile-card">
+        <div class="compile-label">Cycle loop <span class="compile-arrow">→</span> while loop</div>
+        <div class="compile-cols">
+          <div><div class="compile-sublabel ms-starter">Moss</div><pre><code id="c-cycle-moss-out"></code></pre></div>
+          <div><div class="compile-sublabel js-kw">JavaScript</div><pre><code id="c-cycle-js-out"></code></pre></div>
         </div>
       </div>
 
@@ -201,61 +196,6 @@
       queue, visited set, and traversal loop with a single readable block.
     </p>
 
-    <!-- Network diagram -->
-    <div class="graph-diagram-wrap">
-      <svg class="graph-diagram" viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" aria-label="Network graph: gateway connects to serverA and serverB, both connect to database">
-        <defs>
-          <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L8,3 z" fill="#52b788"/>
-          </marker>
-          <filter id="glow">
-            <feGaussianBlur stdDeviation="2.5" result="blur"/>
-            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-        </defs>
-
-        <!-- Edges -->
-        <!-- gateway → serverA -->
-        <line x1="148" y1="85" x2="282" y2="48" stroke="#52b788" stroke-width="1.8" marker-end="url(#arrow)" opacity="0.8"/>
-        <text x="198" y="52" fill="#95d5b2" font-size="11" font-family="Courier New" text-anchor="middle" opacity="0.9">weight 1</text>
-
-        <!-- gateway → serverB -->
-        <line x1="148" y1="105" x2="282" y2="162" stroke="#52b788" stroke-width="1.8" marker-end="url(#arrow)" opacity="0.8"/>
-        <text x="198" y="152" fill="#95d5b2" font-size="11" font-family="Courier New" text-anchor="middle" opacity="0.9">weight 1</text>
-
-        <!-- serverA → database -->
-        <line x1="368" y1="48" x2="490" y2="88" stroke="#52b788" stroke-width="1.8" marker-end="url(#arrow)" opacity="0.8"/>
-        <text x="436" y="58" fill="#95d5b2" font-size="11" font-family="Courier New" text-anchor="middle" opacity="0.9">weight 2</text>
-
-        <!-- serverB → database -->
-        <line x1="368" y1="172" x2="490" y2="132" stroke="#52b788" stroke-width="1.8" marker-end="url(#arrow)" opacity="0.8"/>
-        <text x="436" y="170" fill="#95d5b2" font-size="11" font-family="Courier New" text-anchor="middle" opacity="0.9">weight 2</text>
-
-        <!-- gateway node -->
-        <circle cx="110" cy="95" r="36" fill="#1b4332" stroke="#52b788" stroke-width="2" filter="url(#glow)"/>
-        <text x="110" y="91" fill="#d8f3dc" font-size="11" font-family="Courier New" text-anchor="middle" font-weight="600">gateway</text>
-        <text x="110" y="106" fill="#95d5b2" font-size="9.5" font-family="Courier New" text-anchor="middle" opacity="0.75">start</text>
-
-        <!-- serverA node -->
-        <circle cx="325" cy="44" r="36" fill="#1b4332" stroke="#40916c" stroke-width="1.5"/>
-        <text x="325" y="40" fill="#d8f3dc" font-size="11" font-family="Courier New" text-anchor="middle" font-weight="600">serverA</text>
-        <text x="325" y="55" fill="#95d5b2" font-size="9.5" font-family="Courier New" text-anchor="middle" opacity="0.75">node</text>
-
-        <!-- serverB node -->
-        <circle cx="325" cy="172" r="36" fill="#1b4332" stroke="#40916c" stroke-width="1.5"/>
-        <text x="325" y="168" fill="#d8f3dc" font-size="11" font-family="Courier New" text-anchor="middle" font-weight="600">serverB</text>
-        <text x="325" y="183" fill="#95d5b2" font-size="9.5" font-family="Courier New" text-anchor="middle" opacity="0.75">node</text>
-
-        <!-- database node -->
-        <circle cx="530" cy="108" r="36" fill="#1b4332" stroke="#40916c" stroke-width="1.5"/>
-        <text x="530" y="104" fill="#d8f3dc" font-size="11" font-family="Courier New" text-anchor="middle" font-weight="600">database</text>
-        <text x="530" y="119" fill="#95d5b2" font-size="9.5" font-family="Courier New" text-anchor="middle" opacity="0.75">node</text>
-
-        <!-- BFS order label -->
-        <text x="320" y="212" fill="#7a9e7e" font-size="10.5" font-family="Courier New" text-anchor="middle" font-style="italic">BFS visits: gateway → serverA → serverB → database</text>
-      </svg>
-    </div>
-
     <div class="compare-grid">
       <div class="compare-col compare-col--moss">
         <div class="compare-header">Moss</div>
@@ -270,9 +210,111 @@
         <pre><code id="bfs-py-out"></code></pre>
       </div>
     </div>
+
+    <!-- Network diagram — sits below the code -->
+    <div class="graph-diagram-wrap">
+      <p class="diagram-caption">The graph the code above is solving</p>
+      <svg class="graph-diagram" viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#52b788"/>
+          </marker>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2.5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- gateway → serverA -->
+        <line x1="148" y1="85"  x2="282" y2="48"  stroke="#52b788" stroke-width="1.8" marker-end="url(#arrow)" opacity="0.8"/>
+        <text x="200" y="50"  fill="#95d5b2" font-size="11" font-family="Courier New" text-anchor="middle">weight 1</text>
+
+        <!-- gateway → serverB -->
+        <line x1="148" y1="105" x2="282" y2="162" stroke="#52b788" stroke-width="1.8" marker-end="url(#arrow)" opacity="0.8"/>
+        <text x="200" y="150" fill="#95d5b2" font-size="11" font-family="Courier New" text-anchor="middle">weight 1</text>
+
+        <!-- serverA → database -->
+        <line x1="368" y1="48"  x2="490" y2="88"  stroke="#52b788" stroke-width="1.8" marker-end="url(#arrow)" opacity="0.8"/>
+        <text x="436" y="57"  fill="#95d5b2" font-size="11" font-family="Courier New" text-anchor="middle">weight 2</text>
+
+        <!-- serverB → database -->
+        <line x1="368" y1="172" x2="490" y2="132" stroke="#52b788" stroke-width="1.8" marker-end="url(#arrow)" opacity="0.8"/>
+        <text x="436" y="170" fill="#95d5b2" font-size="11" font-family="Courier New" text-anchor="middle">weight 2</text>
+
+        <!-- gateway (start) -->
+        <circle cx="110" cy="95"  r="38" fill="#1b4332" stroke="#52b788" stroke-width="2.2" filter="url(#glow)"/>
+        <text x="110" y="91"  fill="#d8f3dc" font-size="11" font-family="Courier New" text-anchor="middle" font-weight="700">gateway</text>
+        <text x="110" y="107" fill="#95d5b2" font-size="9"  font-family="Courier New" text-anchor="middle">start</text>
+
+        <!-- serverA -->
+        <circle cx="325" cy="44"  r="36" fill="#1b4332" stroke="#40916c" stroke-width="1.5"/>
+        <text x="325" y="40"  fill="#d8f3dc" font-size="11" font-family="Courier New" text-anchor="middle" font-weight="600">serverA</text>
+        <text x="325" y="56"  fill="#95d5b2" font-size="9"  font-family="Courier New" text-anchor="middle">node</text>
+
+        <!-- serverB -->
+        <circle cx="325" cy="172" r="36" fill="#1b4332" stroke="#40916c" stroke-width="1.5"/>
+        <text x="325" y="168" fill="#d8f3dc" font-size="11" font-family="Courier New" text-anchor="middle" font-weight="600">serverB</text>
+        <text x="325" y="184" fill="#95d5b2" font-size="9"  font-family="Courier New" text-anchor="middle">node</text>
+
+        <!-- database -->
+        <circle cx="530" cy="108" r="36" fill="#1b4332" stroke="#40916c" stroke-width="1.5"/>
+        <text x="530" y="104" fill="#d8f3dc" font-size="11" font-family="Courier New" text-anchor="middle" font-weight="600">database</text>
+        <text x="530" y="120" fill="#95d5b2" font-size="9"  font-family="Courier New" text-anchor="middle">node</text>
+
+        <text x="320" y="213" fill="#7a9e7e" font-size="10.5" font-family="Courier New" text-anchor="middle" font-style="italic">
+          BFS order: gateway → serverA → serverB → database
+        </text>
+      </svg>
+    </div>
   </div>
 </section>
 
+<!-- ── STATIC ANALYSIS ───────────────────────────────────────────────────── -->
+<section class="section section--light">
+  <div class="section-inner wide">
+    <p class="section-eyebrow">Static analysis</p>
+    <h2 class="section-title">Errors caught before the code runs</h2>
+    <p class="section-desc">
+      The Moss analyzer checks contextual constraints at compile time — before any JavaScript is generated.
+    </p>
+
+    <div class="error-grid">
+
+      <div class="error-card">
+        <pre><code id="err1-out"></code></pre>
+        <div class="error-msg">
+          <span class="error-tag">MossError</span>
+          <span><code>harvest</code> can only appear inside a <code>grow</code> body</span>
+        </div>
+      </div>
+
+      <div class="error-card">
+        <pre><code id="err2-out"></code></pre>
+        <div class="error-msg">
+          <span class="error-tag">MossError</span>
+          <span><code>self</code> can only be used inside a colony method</span>
+        </div>
+      </div>
+
+      <div class="error-card">
+        <pre><code id="err3-out"></code></pre>
+        <div class="error-msg">
+          <span class="error-tag">MossError</span>
+          <span><code>wither</code> can only appear inside a <code>cycle</code> body</span>
+        </div>
+      </div>
+
+      <div class="error-card">
+        <pre><code id="err4-out"></code></pre>
+        <div class="error-msg">
+          <span class="error-tag">MossError</span>
+          <span><code>spread</code> requires a graph-typed variable</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
@@ -293,7 +335,6 @@
 
 <!-- ═══════════════════ CODE SOURCES ════════════════════════════════════════ -->
 
-<!-- Guide: basics + fib -->
 <script type="text/x-moss" id="guide-basics">
 sprout name <~ "moss"                        ~~ variable
 grow double(x) [~ harvest x * 2 ~]          ~~ one-line function
@@ -312,7 +353,6 @@ grow fib(n) [~
 bloom fib(10)                                ~~ prints: 55
 </script>
 
-<!-- Guide: colony -->
 <script type="text/x-moss" id="guide-colony">
 sprout creature <~ colony [~
     name  <~ "creature"
@@ -340,7 +380,6 @@ wolf.isAlive() => wolf.describe()
 wolf.howl()
 </script>
 
-<!-- Compiled: guard clause -->
 <script type="text/x-moss" id="c-guard-moss">
 grow abs(x) [~
     x < 0 => harvest -x
@@ -354,7 +393,6 @@ function abs(x) {
 }
 </script>
 
-<!-- Compiled: pipeline -->
 <script type="text/x-moss" id="c-pipe-moss">
 grow double(x) [~ harvest x * 2 ~]
 grow show(x)   [~ bloom x ~]
@@ -368,7 +406,6 @@ function show(x) { console.log(x); }
 show(double(6));
 </script>
 
-<!-- Compiled: colony -->
 <script type="text/x-moss" id="c-colony-moss">
 sprout animal <~ colony [~
     name <~ "animal"
@@ -391,7 +428,21 @@ const cat = Object.assign(
 );
 </script>
 
-<!-- BFS side-by-side: Moss -->
+<script type="text/x-moss" id="c-cycle-moss">
+sprout i <~ 0
+cycle i < 5 [~
+    bloom i
+    i <~ i + 1
+~]
+</script>
+<script type="text/x-js" id="c-cycle-js">
+let i = 0;
+while (i < 5) {
+  console.log(i);
+  i++;
+}
+</script>
+
 <script type="text/x-moss" id="bfs-moss">
 ~~ find all nodes reachable from gateway
 
@@ -414,7 +465,6 @@ spread net from gateway [~
 ~]
 </script>
 
-<!-- BFS side-by-side: JavaScript -->
 <script type="text/x-js" id="bfs-js">
 // find all nodes reachable from gateway
 const adj = {
@@ -440,7 +490,6 @@ while (queue.length > 0) {
 }
 </script>
 
-<!-- BFS side-by-side: Python -->
 <script type="text/x-py" id="bfs-py">
 # find all nodes reachable from gateway
 from collections import deque
@@ -465,6 +514,11 @@ while queue:
             queue.append(n)
 </script>
 
+<script type="text/x-moss" id="err1">harvest 42         ~~ outside any function</script>
+<script type="text/x-moss" id="err2">bloom self.name    ~~ outside any colony</script>
+<script type="text/x-moss" id="err3">wither             ~~ outside any cycle</script>
+<script type="text/x-moss" id="err4">sprout x <~ 0
+spread x from start [~ ~]  ~~ x is not a graph</script>
 
 </body>
 </html>

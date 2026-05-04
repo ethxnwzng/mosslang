@@ -362,13 +362,12 @@ pre code {
   margin-top: 0.25rem;
 }
 
-.guide-label {
-  font-size: 0.76rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--c-mint);
-  margin-bottom: 0.5rem;
+.guide-heading {
+  font-size: 1.1rem;
   font-family: 'EB Garamond', serif;
+  color: var(--c-cream);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 /* ─── Compiled output ────────────────────────────── */
