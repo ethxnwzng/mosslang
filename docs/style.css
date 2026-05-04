@@ -109,10 +109,10 @@ nav ul li a.active { opacity: 1; }
 .hero-intro {
   font-size: 1.05rem;
   color: var(--c-pale);
-  max-width: 680px;
-  margin: 0 auto 2.75rem;
+  max-width: 660px;
+  margin: 0 auto 0;
   line-height: 1.85;
-  opacity: 0.8;
+  opacity: 0.82;
 }
 
 .hero-actions {
@@ -120,6 +120,7 @@ nav ul li a.active { opacity: 1; }
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 2.5rem;
 }
 
 .btn {
@@ -267,7 +268,11 @@ pre code {
   overflow: hidden;
   box-shadow: 0 4px 22px rgba(0,0,0,0.16);
   min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
+
+.compare-col pre { flex: 1; }
 
 .compare-header {
   padding: 0.65rem 1.25rem;
@@ -352,6 +357,7 @@ pre code {
   background: var(--c-darkest);
   border-radius: 14px;
   padding: 1.5rem 1rem 0.75rem;
+  margin-top: 3rem;
   margin-bottom: 1.5rem;
   border: 1px solid rgba(82,183,136,0.18);
 }
