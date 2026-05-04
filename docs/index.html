@@ -139,6 +139,28 @@
     <h2 class="section-title">Moss compiles to clean JavaScript</h2>
     <p class="section-desc">Each construct maps directly to a JavaScript equivalent — no runtime required.</p>
 
+    <div class="pipeline-strip">
+      <div class="pipeline-step">
+        <div class="pipeline-name">Parser</div>
+        <div class="pipeline-detail">Ohm.js grammar reads Moss source into a parse tree</div>
+      </div>
+      <div class="pipeline-sep">→</div>
+      <div class="pipeline-step">
+        <div class="pipeline-name">Analyzer</div>
+        <div class="pipeline-detail">Semantic checks — scope, types, contextual rules</div>
+      </div>
+      <div class="pipeline-sep">→</div>
+      <div class="pipeline-step">
+        <div class="pipeline-name">Optimizer</div>
+        <div class="pipeline-detail">Constant folding and dead-code elimination</div>
+      </div>
+      <div class="pipeline-sep">→</div>
+      <div class="pipeline-step">
+        <div class="pipeline-name">Generator</div>
+        <div class="pipeline-detail">Walks the AST and emits clean JavaScript</div>
+      </div>
+    </div>
+
     <div class="compile-grid">
 
       <div class="compile-card">
