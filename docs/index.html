@@ -37,18 +37,55 @@
   </div>
 </section>
 
-<!-- ═════════════════════════════ WHAT IS MOSS ════════════════════════════ -->
+<!-- ═══════════════════════════ WHY MOSS ══════════════════════════════════ -->
 <section class="section section--light">
+  <div class="section-inner">
+    <p class="section-eyebrow">The idea</p>
+    <h2 class="section-title">Grow from a single spore</h2>
+
+    <div class="why-grid">
+      <div class="why-text">
+        <p>
+          Moss is a naturally reproducing organism. It spreads from a single point,
+          building dense networks through growth and inheritance — no seeds, no roots,
+          just connection. Code that prioritizes reusable, composable pieces follows
+          the same pattern: a project grows from its starting pieces.
+        </p>
+        <p style="margin-top:1rem">
+          This makes Moss especially well-suited for <strong>graph problems</strong>.
+          Any problem that can be modeled as nodes and connections — social networks,
+          computer networks, routing, dependency resolution — is a problem Moss was
+          built to express naturally.
+        </p>
+      </div>
+      <div class="why-callout">
+        <div class="callout-label">Real-world example</div>
+        <div class="callout-title">Network reachability</div>
+        <p class="callout-body">
+          A classic DevOps question: given a network topology, which servers are
+          reachable from a gateway? This is the backbone of tools like Kubernetes
+          network policies, AWS VPC routing, and the core of
+          <strong>LeetCode #1971</strong> — <em>Find if Path Exists in Graph</em>.
+          In Moss, the entire BFS traversal is a single <code>spread</code> block.
+        </p>
+        <div style="margin-top:1.25rem">
+          <pre><code id="why-moss-out"></code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════ KEYWORD REF ═════════════════════════════ -->
+<section class="section section--pale">
   <div class="section-inner">
     <p class="section-eyebrow">The language</p>
     <h2 class="section-title">Code that reads like nature grows</h2>
     <p class="section-desc">
-      Moss is a dynamically typed scripting language with four compiler phases — parse, analyze,
-      optimize, and generate — that targets JavaScript. Every keyword was chosen to feel like
-      something alive: things <em>sprout</em>, functions <em>grow</em>, results <em>bloom</em>.
+      Every keyword was chosen to feel like something alive. Two families —
+      things that <em>open</em> and things that <em>close</em> — cover the entire language.
     </p>
 
-    <!-- ── Keyword quick-reference ── -->
     <div class="kw-glossary">
 
       <div class="kw-group">
@@ -62,7 +99,7 @@
           <div class="kw-row"><span class="kw-token ms-starter">colony</span><span class="kw-desc">create a prototype object</span></div>
           <div class="kw-row"><span class="kw-token ms-starter">grows</span><span class="kw-desc">inherit from a colony</span></div>
           <div class="kw-row"><span class="kw-token ms-starter">self</span><span class="kw-desc">current object inside a method</span></div>
-          <div class="kw-row"><span class="kw-token ms-starter">graph</span><span class="kw-desc">first-class weighted graph</span></div>
+          <div class="kw-row"><span class="kw-token ms-starter">graph</span><span class="kw-desc">first-class weighted directed graph</span></div>
           <div class="kw-row"><span class="kw-token ms-starter">spread</span><span class="kw-desc">BFS traversal over a graph</span></div>
           <div class="kw-row"><span class="kw-token ms-starter">reach</span><span class="kw-desc">callback for each visited node</span></div>
         </div>
@@ -132,15 +169,88 @@
   </div>
 </section>
 
+<!-- ═══════════════════════ COMPILED OUTPUT ═══════════════════════════════ -->
+<section class="section section--light">
+  <div class="section-inner wide">
+    <p class="section-eyebrow">Under the hood</p>
+    <h2 class="section-title">Moss compiles to clean JavaScript</h2>
+    <p class="section-desc">
+      Each construct maps directly to a JavaScript equivalent. Guard clauses become
+      <code>if</code> statements. Colonies become object literals. Pipelines unwrap to
+      nested calls. The output is readable, standard JS — no runtime required.
+    </p>
+
+    <div class="compile-grid">
+
+      <div class="compile-card">
+        <div class="compile-label">Guard clause &nbsp;<span class="compile-arrow">→</span>&nbsp; if statement</div>
+        <div class="compile-cols">
+          <div>
+            <div class="compile-sublabel ms-starter">Moss</div>
+            <pre><code id="c-guard-moss-out"></code></pre>
+          </div>
+          <div>
+            <div class="compile-sublabel js-kw">JavaScript</div>
+            <pre><code id="c-guard-js-out"></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="compile-card">
+        <div class="compile-label">Pipeline &nbsp;<span class="compile-arrow">→</span>&nbsp; nested call</div>
+        <div class="compile-cols">
+          <div>
+            <div class="compile-sublabel ms-starter">Moss</div>
+            <pre><code id="c-pipe-moss-out"></code></pre>
+          </div>
+          <div>
+            <div class="compile-sublabel js-kw">JavaScript</div>
+            <pre><code id="c-pipe-js-out"></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="compile-card">
+        <div class="compile-label">Colony inheritance &nbsp;<span class="compile-arrow">→</span>&nbsp; Object.create</div>
+        <div class="compile-cols">
+          <div>
+            <div class="compile-sublabel ms-starter">Moss</div>
+            <pre><code id="c-colony-moss-out"></code></pre>
+          </div>
+          <div>
+            <div class="compile-sublabel js-kw">JavaScript</div>
+            <pre><code id="c-colony-js-out"></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="compile-card">
+        <div class="compile-label">Spread / reach &nbsp;<span class="compile-arrow">→</span>&nbsp; BFS while loop</div>
+        <div class="compile-cols">
+          <div>
+            <div class="compile-sublabel ms-starter">Moss</div>
+            <pre><code id="c-spread-moss-out"></code></pre>
+          </div>
+          <div>
+            <div class="compile-sublabel js-kw">JavaScript</div>
+            <pre><code id="c-spread-js-out"></code></pre>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ════════════════════════ SIDE-BY-SIDE COMPARE ═════════════════════════ -->
 <section class="section section--pale">
   <div class="section-inner wide">
     <p class="section-eyebrow">Side by side</p>
-    <h2 class="section-title">Fibonacci — Moss vs JavaScript vs Python</h2>
+    <h2 class="section-title">Graph BFS — Moss vs JavaScript vs Python</h2>
     <p class="section-desc">
-      The same recursive Fibonacci function written in three languages.
-      Notice how Moss's guard clause (<code>=&gt;</code>) replaces a full <code>if/return</code>,
-      and <code>cycle</code> replaces <code>while</code>.
+      Find all nodes reachable from a source in a weighted directed graph — the core of
+      <strong>LeetCode #1971</strong> and real network-topology tools.
+      Moss's built-in <code>spread</code> / <code>reach</code> eliminates the queue and visited-set boilerplate entirely.
     </p>
 
     <div class="compare-grid">
@@ -156,6 +266,54 @@
         <div class="compare-header">Python</div>
         <pre><code id="fib-py-out"></code></pre>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ ERROR MESSAGES ════════════════════════════════ -->
+<section class="section section--dark">
+  <div class="section-inner">
+    <p class="section-eyebrow">Static analysis</p>
+    <h2 class="section-title" style="color:var(--c-pale)">Errors caught before the code runs</h2>
+    <p class="section-desc">
+      The Moss analyzer checks your program at compile time —
+      before a single line of JavaScript is generated.
+    </p>
+
+    <div class="error-grid">
+
+      <div class="error-card">
+        <div class="error-snippet"><pre><code id="err1-moss-out"></code></pre></div>
+        <div class="error-msg">
+          <span class="error-tag">MossError</span>
+          <code>harvest</code> can only appear inside a <code>grow</code> body
+        </div>
+      </div>
+
+      <div class="error-card">
+        <div class="error-snippet"><pre><code id="err2-moss-out"></code></pre></div>
+        <div class="error-msg">
+          <span class="error-tag">MossError</span>
+          <code>self</code> can only be used inside a colony method
+        </div>
+      </div>
+
+      <div class="error-card">
+        <div class="error-snippet"><pre><code id="err3-moss-out"></code></pre></div>
+        <div class="error-msg">
+          <span class="error-tag">MossError</span>
+          <code>wither</code> can only appear inside a <code>cycle</code> body
+        </div>
+      </div>
+
+      <div class="error-card">
+        <div class="error-snippet"><pre><code id="err4-moss-out"></code></pre></div>
+        <div class="error-msg">
+          <span class="error-tag">MossError</span>
+          <code>spread</code> requires a graph-typed variable
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -181,6 +339,25 @@
 
 <!-- ═════════════════════════ CODE SOURCES ════════════════════════════════ -->
 
+<!-- Why Moss callout -->
+<script type="text/x-moss" id="why-moss">
+sprout net <~ graph [~
+    node gateway
+    node serverA
+    node database
+    edge gateway -> serverA  weight 1
+    edge serverA -> database weight 2
+~]
+
+bloom "Reachable nodes:"
+spread net from gateway [~
+    reach current [~
+        bloom current
+    ~]
+~]
+</script>
+
+<!-- Syntax guide -->
 <script type="text/x-moss" id="guide">
 ~~ one-liner basics
 
@@ -221,43 +398,161 @@ wolf.isAlive() => wolf.describe()
 wolf.howl()
 </script>
 
+<!-- Compiled output: guard -->
+<script type="text/x-moss" id="c-guard-moss">
+grow abs(x) [~
+    x < 0 => harvest -x
+    harvest x
+~]
+</script>
+<script type="text/x-js" id="c-guard-js">
+function abs(x) {
+  if (x < 0) { return -x; }
+  return x;
+}
+</script>
+
+<!-- Compiled output: pipeline -->
+<script type="text/x-moss" id="c-pipe-moss">
+grow double(x) [~ harvest x * 2 ~]
+grow show(x)   [~ bloom x ~]
+
+6 ~> double ~> show
+</script>
+<script type="text/x-js" id="c-pipe-js">
+function double(x) { return x * 2; }
+function show(x)   { console.log(x); }
+
+show(double(6));
+</script>
+
+<!-- Compiled output: colony -->
+<script type="text/x-moss" id="c-colony-moss">
+sprout animal <~ colony [~
+    name <~ "animal"
+    grow speak() [~
+        bloom self.name
+    ~]
+~]
+
+sprout cat <~ animal grows [~
+    name <~ "cat"
+~]
+</script>
+<script type="text/x-js" id="c-colony-js">
+const animal = {
+  name: "animal",
+  speak() { console.log(this.name); }
+};
+
+const cat = Object.assign(
+  Object.create(animal),
+  { name: "cat" }
+);
+</script>
+
+<!-- Compiled output: spread -->
+<script type="text/x-moss" id="c-spread-moss">
+spread g from start [~
+    reach current [~
+        bloom current
+    ~]
+~]
+</script>
+<script type="text/x-js" id="c-spread-js">
+const _q = [start];
+const _v = new Set([start]);
+while (_q.length > 0) {
+  const current = _q.shift();
+  console.log(current);
+  for (const _n of g._adj[current]||[]) {
+    if (!_v.has(_n)) {
+      _v.add(_n); _q.push(_n);
+    }
+  }
+}
+</script>
+
+<!-- Side-by-side: graph BFS (Moss) -->
 <script type="text/x-moss" id="fib-moss">
-grow fib(n) [~
-    n <= 1 => harvest n
-    harvest fib(n - 1) + fib(n - 2)
+~~ find all reachable nodes from gateway
+
+sprout net <~ graph [~
+    node gateway
+    node serverA
+    node serverB
+    node database
+    edge gateway -> serverA  weight 1
+    edge gateway -> serverB  weight 1
+    edge serverA -> database weight 2
+    edge serverB -> database weight 2
 ~]
 
-sprout i <~ 0
-cycle i <= 10 [~
-    bloom fib(i)
-    i <~ i + 1
+bloom "Reachable from gateway:"
+spread net from gateway [~
+    reach current [~
+        bloom current
+    ~]
 ~]
 </script>
 
+<!-- Side-by-side: graph BFS (JavaScript) -->
 <script type="text/x-js" id="fib-js">
-function fib(n) {
-  if (n <= 1) return n;
-  return fib(n - 1) + fib(n - 2);
-}
+// find all reachable nodes from gateway
+const adj = {
+  gateway: ["serverA", "serverB"],
+  serverA: ["database"],
+  serverB: ["database"],
+  database: []
+};
 
-let i = 0;
-while (i <= 10) {
-  console.log(fib(i));
-  i++;
+const queue   = ["gateway"];
+const visited = new Set(["gateway"]);
+
+console.log("Reachable from gateway:");
+while (queue.length > 0) {
+  const current = queue.shift();
+  console.log(current);
+  for (const n of adj[current] || []) {
+    if (!visited.has(n)) {
+      visited.add(n);
+      queue.push(n);
+    }
+  }
 }
 </script>
 
+<!-- Side-by-side: graph BFS (Python) -->
 <script type="text/x-py" id="fib-py">
-def fib(n):
-    if n <= 1:
-        return n
-    return fib(n - 1) + fib(n - 2)
+# find all reachable nodes from gateway
+from collections import deque
 
-i = 0
-while i <= 10:
-    print(fib(i))
-    i += 1
+adj = {
+  "gateway": ["serverA", "serverB"],
+  "serverA": ["database"],
+  "serverB": ["database"],
+  "database": []
+}
+
+queue   = deque(["gateway"])
+visited = {"gateway"}
+
+print("Reachable from gateway:")
+while queue:
+    current = queue.popleft()
+    print(current)
+    for n in adj.get(current, []):
+        if n not in visited:
+            visited.add(n)
+            queue.append(n)
 </script>
+
+<!-- Error snippets -->
+<script type="text/x-moss" id="err1-moss">harvest 42         ~~ outside any function</script>
+<script type="text/x-moss" id="err2-moss">bloom self.name    ~~ outside any colony</script>
+<script type="text/x-moss" id="err3-moss">wither             ~~ outside any cycle</script>
+<script type="text/x-moss" id="err4-moss">sprout x <~ 0
+spread x from start [~ ~]  ~~ x is not a graph</script>
 
 </body>
 </html>
