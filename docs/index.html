@@ -337,6 +337,13 @@ bloom double(6)                              ~~ prints: 12
 bloom greet(name)                            ~~ prints: hi, moss
 name == "moss" => bloom "it's moss"         ~~ guard clause
 
+~~ pipeline: value flows left-to-right
+grow square(x) [~ harvest x * x ~]
+grow show(x)   [~ bloom x ~]
+
+5 ~> double ~> show                          ~~ same as show(double(5)) → 10
+5 ~> square ~> double ~> show               ~~ chained:  show(double(square(5))) → 50
+
 ~~ fibonacci with guard clause base case
 grow fib(n) [~
     n <= 1 => harvest n
