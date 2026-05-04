@@ -76,8 +76,8 @@ nav ul li a.active { opacity: 1; }
 
 /* ─── Hero ───────────────────────────────────────── */
 .hero {
-  background: linear-gradient(148deg, var(--c-darkest) 0%, var(--c-dark) 45%, var(--c-forest) 100%);
-  padding: 7rem 2rem 6.5rem;
+  background: linear-gradient(160deg, var(--c-darkest) 0%, var(--c-dark) 100%);
+  padding: 7rem 2rem 6rem;
   text-align: center;
   color: var(--c-pale);
 }
@@ -102,8 +102,17 @@ nav ul li a.active { opacity: 1; }
   color: var(--c-mint);
   font-style: italic;
   max-width: 560px;
-  margin: 0 auto 2.75rem;
+  margin: 0 auto 1.5rem;
   opacity: 0.9;
+}
+
+.hero-intro {
+  font-size: 1.05rem;
+  color: var(--c-pale);
+  max-width: 680px;
+  margin: 0 auto 2.75rem;
+  line-height: 1.85;
+  opacity: 0.8;
 }
 
 .hero-actions {
@@ -257,6 +266,7 @@ pre code {
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 4px 22px rgba(0,0,0,0.16);
+  min-width: 0;
 }
 
 .compare-header {
@@ -363,11 +373,14 @@ pre code {
 }
 
 .guide-heading {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-family: 'EB Garamond', serif;
-  color: var(--c-cream);
-  margin-bottom: 0.5rem;
-  font-weight: 600;
+  color: var(--c-pale);
+  margin-bottom: 0.6rem;
+  margin-top: 0.25rem;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(210,243,220,0.22);
+  padding-bottom: 0.35rem;
 }
 
 /* ─── Compiled output ────────────────────────────── */
@@ -402,9 +415,12 @@ pre code {
   grid-template-columns: 1fr 1fr;
 }
 
-.compile-cols > div { padding: 0.85rem; }
+.compile-cols > div {
+  padding: 0.75rem;
+  background: var(--c-darkest);
+}
 .compile-cols > div:first-child {
-  border-right: 1px solid rgba(64,145,108,0.12);
+  border-right: 1px solid rgba(64,145,108,0.18);
 }
 
 .compile-sublabel {

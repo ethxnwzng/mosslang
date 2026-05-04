@@ -26,6 +26,13 @@
   <img src="logo.svg" alt="Moss" class="hero-logo" />
   <h1>grow something beautiful</h1>
   <p class="hero-sub">A nature-inspired scripting language that compiles to JavaScript.</p>
+  <p class="hero-intro">
+    Moss is named for the plant — moss grows in colonies, spreading across connected surfaces through
+    small, interlocking pieces. Graph problems work the same way: social networks track degrees of
+    connection, GPS computes shortest routes, package managers resolve dependency chains, cloud platforms
+    map network topology. Moss treats graphs as a first-class part of the language. Declare them in
+    syntax, traverse them in one block, no boilerplate required.
+  </p>
   <div class="hero-actions">
     <a href="examples.html" class="btn btn-primary">See Examples</a>
     <a href="glossary.html" class="btn btn-outline">Glossary</a>
@@ -33,23 +40,11 @@
   </div>
 </section>
 
-<!-- ── INTRO ─────────────────────────────────────────────────────────────── -->
-<section class="section section--light">
+<!-- ── KEYWORD GLOSSARY ──────────────────────────────────────────────────── -->
+<section class="section section--pale">
   <div class="section-inner">
     <p class="section-eyebrow">The language</p>
-    <h2 class="section-title">Code that reads like nature grows</h2>
-    <p class="section-desc">
-      Graph problems are everywhere. Social networks find degrees of connection.
-      GPS apps compute shortest routes. Package managers resolve dependency chains.
-      Cloud platforms map network policies. Moss treats graphs as a core part of the language —
-      declare them in syntax, traverse them in one block, no boilerplate required.
-    </p>
-  </div>
-</section>
-
-<!-- ── KEYWORD GLOSSARY ──────────────────────────────────────────────────── -->
-<section class="section section--pale" style="padding-top:0">
-  <div class="section-inner">
+    <h2 class="section-title" style="margin-bottom:1.75rem">Keywords at a glance</h2>
     <div class="kw-glossary">
       <div class="kw-group">
         <div class="kw-group-label" style="color:var(--syn-starter)">Starters — open or declare</div>
@@ -140,7 +135,7 @@
 </section>
 
 <!-- ── COMPILES TO JS ────────────────────────────────────────────────────── -->
-<section class="section section--light">
+<section class="section section--pale">
   <div class="section-inner wide">
     <p class="section-eyebrow">Under the hood</p>
     <h2 class="section-title">Moss compiles to clean JavaScript</h2>
@@ -214,7 +209,7 @@
     <!-- Network diagram — sits below the code -->
     <div class="graph-diagram-wrap">
       <p class="diagram-caption">The graph the code above is solving</p>
-      <svg class="graph-diagram" viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg">
+      <svg class="graph-diagram" viewBox="0 0 640 245" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
             <path d="M0,0 L0,6 L8,3 z" fill="#52b788"/>
@@ -261,7 +256,7 @@
         <text x="530" y="104" fill="#d8f3dc" font-size="11" font-family="Courier New" text-anchor="middle" font-weight="600">database</text>
         <text x="530" y="120" fill="#95d5b2" font-size="9"  font-family="Courier New" text-anchor="middle">node</text>
 
-        <text x="320" y="213" fill="#7a9e7e" font-size="10.5" font-family="Courier New" text-anchor="middle" font-style="italic">
+        <text x="320" y="237" fill="#7a9e7e" font-size="10.5" font-family="Courier New" text-anchor="middle" font-style="italic">
           BFS order: gateway → serverA → serverB → database
         </text>
       </svg>
