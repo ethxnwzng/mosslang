@@ -181,7 +181,7 @@
         <div class="pipeline-detail">Walks the optimized AST and emits JavaScript strings</div>
         <ul class="pipeline-facts">
           <li><code>spread/reach</code> expands to a full BFS — queue, visited <code>Set</code>, adjacency <code>Map</code></li>
-          <li><code>grows</code> emits <code>Object.assign(Object.create(base), {…})</code>; <code>self</code> → <code>this</code></li>
+          <li><code>grows</code> emits <code>Object.assign(Object.create(…))</code>; <code>self</code> becomes <code>this</code></li>
           <li><code>bloom</code> → <code>console.log</code>, <code>harvest</code> → <code>return</code>, <code>wither</code> → <code>break</code></li>
         </ul>
       </div>

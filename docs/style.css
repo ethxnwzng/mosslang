@@ -391,25 +391,26 @@ pre code {
 
 /* ─── Compiler pipeline strip ───────────────────── */
 .pipeline-strip {
-  display: flex;
-  align-items: flex-start;
-  gap: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 2rem;
   margin: 1.75rem 0 2rem;
   background: var(--c-darkest);
   border-radius: 12px;
-  padding: 1.5rem;
-  flex-wrap: wrap;
+  padding: 1.5rem 1.75rem;
   border: 1px solid rgba(82,183,136,0.15);
 }
 
+.pipeline-sep { display: none; }
+
 .pipeline-step {
-  flex: 1;
-  min-width: 160px;
+  border-left: 2px solid rgba(82,183,136,0.2);
+  padding-left: 1rem;
 }
 
 .pipeline-name {
   font-family: 'Courier New', monospace;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: var(--syn-starter);
   margin-bottom: 0.3rem;
@@ -418,15 +419,15 @@ pre code {
 }
 
 .pipeline-detail {
-  font-size: 0.8rem;
-  color: var(--c-mint);
-  opacity: 0.75;
-  line-height: 1.45;
+  font-size: 0.83rem;
+  color: var(--c-pale);
+  opacity: 0.85;
+  line-height: 1.5;
   margin-bottom: 0.5rem;
 }
 
 .pipeline-detail code {
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   color: var(--syn-string);
   font-family: 'Courier New', monospace;
 }
@@ -437,16 +438,17 @@ pre code {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.3rem;
 }
 
 .pipeline-facts li {
-  font-size: 0.76rem;
+  font-size: 0.8rem;
   color: var(--c-mint);
-  opacity: 0.58;
-  line-height: 1.4;
-  padding-left: 0.85rem;
+  opacity: 0.82;
+  line-height: 1.45;
+  padding-left: 0.9rem;
   position: relative;
+  word-break: break-word;
 }
 
 .pipeline-facts li::before {
@@ -454,22 +456,12 @@ pre code {
   position: absolute;
   left: 0;
   color: var(--syn-ender);
-  opacity: 0.7;
 }
 
 .pipeline-facts code {
-  font-size: 0.73rem;
+  font-size: 0.76rem;
   color: var(--syn-string);
   font-family: 'Courier New', monospace;
-}
-
-.pipeline-sep {
-  color: var(--syn-ender);
-  font-size: 1rem;
-  padding: 0 0.6rem;
-  padding-top: 0.05rem;
-  flex-shrink: 0;
-  opacity: 0.8;
 }
 
 /* ─── Compiled output ────────────────────────────── */
