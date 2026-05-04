@@ -1,0 +1,36 @@
+~~ Network path analysis — graphs, colonies, pipeline, spread
+
+sprout network <~ graph [~
+    node gateway
+    node serverA
+    node serverB
+    node database
+    node cache
+    edge gateway -> serverA  weight 1
+    edge gateway -> serverB  weight 1
+    edge serverA -> database weight 2
+    edge serverB -> database weight 2
+    edge serverA -> cache    weight 1
+    edge serverB -> cache    weight 1
+    edge cache   -> database weight 1
+~]
+
+sprout stats <~ colony [~
+    visited <~ 0
+
+    grow record(name) [~
+        self.visited <~ self.visited + 1
+        bloom name
+    ~]
+~]
+
+bloom "Reachable nodes from gateway:"
+spread network from gateway [~
+    reach current [~
+        stats.record(current)
+
+    ~]
+~]
+
+bloom "Total nodes visited:"
+bloom stats.visited

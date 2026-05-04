@@ -7,6 +7,22 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ethxnwzng/moss"
+    "url": "https://github.com/ethxnwzng/mosslang"
+  },
+  "scripts": {
+    "test": "vitest run --coverage"
+  },
+  "dependencies": {
+    "ohm-js": "^17.5.0"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.5",
+    "vitest": "^4.1.5"
+  },
+  "vitest": {
+    "coverage": {
+      "provider": "v8",
+      "reporter": ["text", "lcov"]
+    }
   }
 }

@@ -1,1 +1,91 @@
-// Moss grammar
+Moss {
+  Program = Statement*
+
+  Statement = FunDecl
+            | VarDecl
+            | MemberAssign
+            | Assign
+            | GuardStmt
+            | BloomStmt
+            | SpreadStmt
+            | WhenStmt
+            | CycleStmt
+            | HarvestStmt
+            | WitherStmt
+            | DormantStmt
+            | ExprStmt
+
+  FunDecl      = "grow" id "(" Params ")" Block
+  Params       = ListOf<id, ",">
+  VarDecl      = "sprout" id "<~" Exp
+  MemberAssign = MemberBase ("." id)+ "<~" Exp
+  MemberBase   = "self" | id
+  Assign       = id "<~" Exp
+  GuardStmt    = Exp "=>" Statement
+  BloomStmt    = "bloom" Exp
+  SpreadStmt   = "spread" Exp "from" id "[~" ReachClause "~]"
+  ReachClause  = "reach" id Block
+  WhenStmt     = "when" Exp Block ("otherwise" Block)?
+  CycleStmt    = "cycle" Exp Block
+  HarvestStmt  = "harvest" Exp
+  WitherStmt   = "wither"
+  DormantStmt  = "dormant"
+  ExprStmt     = Exp
+
+  Block = "[~" Statement* "~]"
+
+  Exp  = Exp "~>" Exp1         -- pipe
+       | Exp "or" Exp1         -- or
+       | Exp1
+  Exp1 = Exp1 "and" Exp2       -- and
+       | Exp2
+  Exp2 = Exp3 relop Exp3       -- compare
+       | Exp3
+  Exp3 = Exp3 "+" Exp4         -- add
+       | Exp3 "-" Exp4         -- sub
+       | Exp4
+  Exp4 = Exp4 "*" Exp5         -- mul
+       | Exp4 "/" Exp5         -- div
+       | Exp4 "%" Exp5         -- mod
+       | Exp5
+  Exp5 = "-" Exp6              -- negate
+       | "not" Exp6            -- not
+       | Exp6
+  Exp6 = Exp6 "(" Args ")"                     -- call
+       | Exp6 "." id                            -- member
+       | Exp6 "grows" "[~" ColonyMember* "~]"  -- grows
+       | Exp7
+  Exp7 = "(" Exp ")"           -- paren
+       | GraphLit
+       | ColonyLit
+       | boollit
+       | numlit
+       | strlit
+       | "self"                -- self
+       | id                    -- id
+
+  Args = ListOf<Exp, ",">
+
+  GraphLit     = "graph" "[~" GraphItem* "~]"
+  GraphItem    = EdgeDecl | NodeDecl
+  NodeDecl     = "node" id
+  EdgeDecl     = "edge" id "->" id ("weight" numlit)?
+
+  ColonyLit    = "colony" "[~" ColonyMember* "~]"
+  ColonyMember = FunDecl | FieldDecl
+  FieldDecl    = id "<~" Exp
+
+  relop   = "<=" | ">=" | "==" | "!=" | "<" | ">"
+  boollit = ("true" | "false") ~(alnum | "_")
+  numlit  = digit+ ("." digit+)?
+  strlit  = "\"" (~"\"" any)* "\""
+  id      = ~keyword letter (alnum | "_")*
+  keyword = ( "sprout"  | "grow"    | "bloom"  | "when"   | "otherwise"
+            | "cycle"   | "harvest" | "wither" | "dormant"
+            | "true"    | "false"   | "and"    | "or"     | "not"
+            | "graph"   | "node"    | "edge"   | "weight"
+            | "spread"  | "from"    | "reach"
+            | "colony"  | "grows"   | "self" ) ~(alnum | "_")
+
+  space += "~~" (~"\n" any)* -- comment
+}

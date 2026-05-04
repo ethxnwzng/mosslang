@@ -1,0 +1,39 @@
+~~ Colonies and prototypal inheritance — colony, grows, self, methods
+
+sprout creature <~ colony [~
+    name  <~ "creature"
+    lives <~ 3
+
+    grow describe() [~
+        bloom self.name
+    ~]
+
+    grow isAlive() [~
+        harvest self.lives > 0
+    ~]
+~]
+
+sprout wolf <~ creature grows [~
+    name  <~ "wolf"
+    lives <~ 5
+
+    grow howl() [~
+        bloom "Awoooo!"
+    ~]
+~]
+
+sprout ghost <~ creature grows [~
+    name  <~ "ghost"
+    lives <~ 1
+
+    grow haunt() [~
+        bloom "Boo!"
+    ~]
+~]
+
+wolf.describe()
+wolf.howl()
+ghost.describe()
+ghost.haunt()
+
+wolf.isAlive() => bloom "The wolf lives on."

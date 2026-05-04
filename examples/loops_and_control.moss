@@ -1,0 +1,28 @@
+~~ Loops, wither (break), dormant (continue), guard clauses
+
+~~ Print even numbers 2–18, skip multiples of 6
+sprout n <~ 0
+cycle n < 20 [~
+    n <~ n + 1
+    n % 2 != 0 => dormant
+    n % 6 == 0 => wither
+    bloom n
+~]
+
+~~ Countdown with early exit
+sprout countdown <~ 10
+cycle countdown > 0 [~
+    countdown == 5 => bloom "halfway!"
+    bloom countdown
+    countdown <~ countdown - 1
+~]
+
+~~ Function with early harvest via guard
+grow firstNegative(a, b, c) [~
+    a < 0 => harvest a
+    b < 0 => harvest b
+    c < 0 => harvest c
+    harvest 0
+~]
+
+bloom firstNegative(3, -7, 2)

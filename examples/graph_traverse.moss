@@ -1,0 +1,21 @@
+~~ Graph traversal — graph literal, weighted edges, BFS spread/reach
+
+sprout forest <~ graph [~
+    node root
+    node oak
+    node pine
+    node fern
+    node moss
+    edge root -> oak   weight 3
+    edge root -> pine  weight 5
+    edge oak  -> fern  weight 2
+    edge pine -> moss  weight 1
+    edge fern -> moss  weight 4
+~]
+
+bloom "BFS from root:"
+spread forest from root [~
+    reach current [~
+        bloom current
+    ~]
+~]

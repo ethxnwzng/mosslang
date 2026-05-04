@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Examples — Moss</title>
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="moss-highlight.js" defer></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.svg" alt="Moss" />
+  </a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="examples.html" class="active">Examples</a></li>
+    <li><a href="glossary.html">Glossary</a></li>
+    <li><a href="https://github.com/ethxnwzng/mosslang" target="_blank" rel="noopener">GitHub</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <h1>Examples</h1>
+  <p>Six programs that cover the full surface of the language</p>
+</div>
+
+<!-- EXAMPLES -->
+<section class="section section--light">
+  <div class="section-inner">
+
+    <!-- 1. Calculator -->
+    <div class="example-section">
+      <h3>Calculator</h3>
+      <p class="ex-desc">
+        Arithmetic helpers, guard-clause early returns, and multi-argument functions.
+        Shows how <code>grow</code> replaces <code>function</code>, and guard clauses
+        (<code>=&gt;</code>) replace <code>if/return</code> for simple checks.
+      </p>
+      <pre><code id="calc-out"></code></pre>
+    </div>
+
+    <!-- 2. Fibonacci -->
+    <div class="example-section">
+      <h3>Fibonacci</h3>
+      <p class="ex-desc">
+        Recursive Fibonacci with a guard clause base case.
+        The guard <code>n &lt;= 1 =&gt; harvest n</code> is a one-line early exit —
+        semantically identical to <code>if (n &lt;= 1) return n</code> in JavaScript,
+        but without the braces or the keyword noise.
+      </p>
+      <pre><code id="fib-out"></code></pre>
+    </div>
+
+    <!-- 3. Loops and Control -->
+    <div class="example-section">
+      <h3>Loops &amp; Control Flow</h3>
+      <p class="ex-desc">
+        Demonstrates <code>cycle</code> (while loop), <code>dormant</code> (continue),
+        <code>wither</code> (break), and guard clauses as loop-body conditionals.
+        Early exits from loops keep loop bodies clean and imperative.
+      </p>
+      <pre><code id="loops-out"></code></pre>
+    </div>
+
+    <!-- 4. Colony Creatures -->
+    <div class="example-section">
+      <h3>Colony Creatures</h3>
+      <p class="ex-desc">
+        Prototype-based object-oriented programming. A <code>colony</code> block is a
+        prototype object; <code>grows</code> performs prototypal inheritance via
+        <code>Object.create + Object.assign</code>. Methods use <code>self</code>
+        to refer to the current instance — contextually checked at compile time.
+      </p>
+      <pre><code id="colony-out"></code></pre>
+    </div>
+
+    <!-- 5. Graph Traverse -->
+    <div class="example-section">
+      <h3>Graph Traversal</h3>
+      <p class="ex-desc">
+        First-class weighted graphs with <code>graph [~ node … edge … weight … ~]</code>.
+        <code>spread … from … reach</code> performs a breadth-first traversal.
+        The compiler verifies at analysis time that the spread target is a graph-typed variable.
+      </p>
+      <pre><code id="graph-out"></code></pre>
+    </div>
+
+    <!-- 6. Network Paths -->
+    <div class="example-section">
+      <h3>Network Paths</h3>
+      <p class="ex-desc">
+        Combines graphs, colonies, and BFS traversal in one program.
+        A <code>colony</code> tracks visit statistics while <code>spread</code> walks
+        the graph — demonstrating how Moss's primitives compose naturally.
+      </p>
+      <pre><code id="network-out"></code></pre>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <strong>Moss</strong> &mdash; grow something beautiful
+  </p>
+  <p>
+    By <a href="https://github.com/ethxnwzng" target="_blank" rel="noopener">Ethan Wong</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://github.com/ethxnwzng/mosslang" target="_blank" rel="noopener">GitHub</a>
+    &nbsp;&middot;&nbsp;
+    <a href="index.html">Home</a>
+    &nbsp;&middot;&nbsp;
+    <a href="glossary.html">Glossary</a>
+  </p>
+</footer>
+
+<!-- CODE SOURCES -->
+
+<script type="text/x-moss" id="calc">
+~~ Calculator — arithmetic, pipeline, guard clauses
+
+grow add(a, b)      [~ harvest a + b ~]
+grow subtract(a, b) [~ harvest a - b ~]
+grow multiply(a, b) [~ harvest a * b ~]
+grow divide(a, b)   [~ harvest a / b ~]
+grow modulo(a, b)   [~ harvest a % b ~]
+
+grow abs(x) [~
+    x < 0 => harvest -x
+    harvest x
+~]
+
+grow max(a, b) [~
+    a >= b => harvest a
+    harvest b
+~]
+
+grow inRange(val, lo, hi) [~
+    harvest val >= lo and val <= hi
+~]
+
+bloom add(10, 5)
+bloom subtract(10, 5)
+bloom multiply(10, 5)
+bloom divide(10, 5)
+bloom modulo(10, 3)
+bloom abs(-42)
+bloom max(7, 13)
+bloom inRange(8, 1, 10)
+bloom inRange(15, 1, 10)
+</script>
+
+<script type="text/x-moss" id="fib">
+~~ Fibonacci — guard clauses, pipeline, recursion
+
+grow fib(n) [~
+    n <= 1 => harvest n
+    harvest fib(n - 1) + fib(n - 2)
+~]
+
+sprout i <~ 0
+cycle i <= 10 [~
+    bloom fib(i)
+    i <~ i + 1
+~]
+</script>
+
+<script type="text/x-moss" id="loops">
+~~ Loops, wither (break), dormant (continue), guard clauses
+
+~~ Print even numbers 2–18, skip multiples of 6
+sprout n <~ 0
+cycle n < 20 [~
+    n <~ n + 1
+    n % 2 != 0 => dormant
+    n % 6 == 0 => wither
+    bloom n
+~]
+
+~~ Countdown with early exit
+sprout countdown <~ 10
+cycle countdown > 0 [~
+    countdown == 5 => bloom "halfway!"
+    bloom countdown
+    countdown <~ countdown - 1
+~]
+
+~~ Function with early harvest via guard
+grow firstNegative(a, b, c) [~
+    a < 0 => harvest a
+    b < 0 => harvest b
+    c < 0 => harvest c
+    harvest 0
+~]
+
+bloom firstNegative(3, -7, 2)
+</script>
+
+<script type="text/x-moss" id="colony">
+~~ Colonies and prototypal inheritance — colony, grows, self, methods
+
+sprout creature <~ colony [~
+    name  <~ "creature"
+    lives <~ 3
+
+    grow describe() [~
+        bloom self.name
+    ~]
+
+    grow isAlive() [~
+        harvest self.lives > 0
+    ~]
+~]
+
+sprout wolf <~ creature grows [~
+    name  <~ "wolf"
+    lives <~ 5
+
+    grow howl() [~
+        bloom "Awoooo!"
+    ~]
+~]
+
+sprout ghost <~ creature grows [~
+    name  <~ "ghost"
+    lives <~ 1
+
+    grow haunt() [~
+        bloom "Boo!"
+    ~]
+~]
+
+wolf.describe()
+wolf.howl()
+ghost.describe()
+ghost.haunt()
+
+wolf.isAlive() => bloom "The wolf lives on."
+</script>
+
+<script type="text/x-moss" id="graph">
+~~ Graph traversal — graph literal, weighted edges, BFS spread/reach
+
+sprout forest <~ graph [~
+    node root
+    node oak
+    node pine
+    node fern
+    node moss
+    edge root -> oak   weight 3
+    edge root -> pine  weight 5
+    edge oak  -> fern  weight 2
+    edge pine -> moss  weight 1
+    edge fern -> moss  weight 4
+~]
+
+bloom "BFS from root:"
+spread forest from root [~
+    reach current [~
+        bloom current
+    ~]
+~]
+</script>
+
+<script type="text/x-moss" id="network">
+~~ Network path analysis — graphs, colonies, pipeline, spread
+
+sprout network <~ graph [~
+    node gateway
+    node serverA
+    node serverB
+    node database
+    node cache
+    edge gateway -> serverA  weight 1
+    edge gateway -> serverB  weight 1
+    edge serverA -> database weight 2
+    edge serverB -> database weight 2
+    edge serverA -> cache    weight 1
+    edge serverB -> cache    weight 1
+    edge cache   -> database weight 1
+~]
+
+sprout stats <~ colony [~
+    visited <~ 0
+
+    grow record(name) [~
+        self.visited <~ self.visited + 1
+        bloom name
+    ~]
+~]
+
+bloom "Reachable nodes from gateway:"
+spread network from gateway [~
+    reach current [~
+        stats.record(current)
+    ~]
+~]
+
+bloom "Total nodes visited:"
+bloom stats.visited
+</script>
+
+</body>
+</html>

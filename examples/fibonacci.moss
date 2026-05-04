@@ -1,0 +1,12 @@
+~~ Fibonacci — guard clauses, pipeline, recursion
+
+grow fib(n) [~
+    n <= 1 => harvest n
+    harvest fib(n - 1) + fib(n - 2)
+~]
+
+sprout i <~ 0
+cycle i <= 10 [~
+    bloom fib(i)
+    i <~ i + 1
+~]

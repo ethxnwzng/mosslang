@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moss — grow something beautiful</title>
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="moss-highlight.js" defer></script>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════ NAV ═══════════════════════════════ -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.svg" alt="Moss" />
+  </a>
+  <ul>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="examples.html">Examples</a></li>
+    <li><a href="glossary.html">Glossary</a></li>
+    <li><a href="https://github.com/ethxnwzng/mosslang" target="_blank" rel="noopener">GitHub</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="hero">
+  <img src="logo.svg" alt="Moss" class="hero-logo" />
+  <h1>grow something beautiful</h1>
+  <p class="hero-sub">
+    A nature-inspired scripting language that compiles to JavaScript.
+  </p>
+  <div class="hero-actions">
+    <a href="examples.html" class="btn btn-primary">See Examples</a>
+    <a href="glossary.html" class="btn btn-outline">Glossary</a>
+    <a href="https://github.com/ethxnwzng/mosslang" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+  </div>
+</section>
+
+<!-- ═════════════════════════════ WHAT IS MOSS ════════════════════════════ -->
+<section class="section section--light">
+  <div class="section-inner">
+    <p class="section-eyebrow">The language</p>
+    <h2 class="section-title">Code that reads like nature grows</h2>
+    <p class="section-desc">
+      Moss is a dynamically typed scripting language with four compiler phases — parse, analyze,
+      optimize, and generate — that targets JavaScript. Every keyword was chosen to feel like
+      something alive: things <em>sprout</em>, functions <em>grow</em>, results <em>bloom</em>.
+    </p>
+
+    <div class="features">
+      <div class="feature">
+        <span class="feature-icon">&#127807;</span>
+        <h3>Nature-first keywords</h3>
+        <p>
+          <code>grow</code> declares functions. <code>sprout</code> declares variables.
+          <code>bloom</code> prints. <code>harvest</code> returns. Every word has a reason.
+        </p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">&#128279;</span>
+        <h3>Pipeline operator</h3>
+        <p>
+          Chain calls left-to-right with <code>~&gt;</code>: <code>x ~&gt; double ~&gt; show</code>
+          reads exactly like a data flow — no nested parentheses.
+        </p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">&#128737;</span>
+        <h3>Guard clauses</h3>
+        <p>
+          One-armed conditionals with <code>=&gt;</code>: <code>n &lt;= 0 =&gt; harvest 0</code>
+          keeps early exits crisp and readable.
+        </p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">&#127795;</span>
+        <h3>Prototype colonies</h3>
+        <p>
+          Objects are <code>colony</code> blocks. Inheritance is <code>grows</code>.
+          No <code>class</code> keyword, no <code>new</code> — just living prototypes.
+        </p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">&#128202;</span>
+        <h3>First-class graphs</h3>
+        <p>
+          Declare weighted graphs inline with <code>graph [~ node … edge … ~]</code>
+          and traverse them with <code>spread … from … reach</code>.
+        </p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">&#9889;</span>
+        <h3>Compile-time analysis</h3>
+        <p>
+          Static checks for scope, <code>harvest</code> outside functions,
+          <code>self</code> outside colonies, and type-correct <code>spread</code> targets.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SYNTAX GUIDE ══════════════════════════════ -->
+<section class="section section--dark">
+  <div class="section-inner">
+    <p class="section-eyebrow">Reading Moss</p>
+    <h2 class="section-title">Every color tells you what a word does</h2>
+    <p class="section-desc">
+      Moss uses two symbolic operators (<code style="color:var(--syn-operator)">&lt;~</code> and <code style="color:var(--syn-operator)">~&gt;</code>)
+      and two keyword families — things that <em>begin</em> and things that <em>end</em>.
+      The colors below are consistent across every example on this site.
+    </p>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:var(--syn-starter)"></div>
+        <span class="legend-sample ms-starter">grow &nbsp;sprout &nbsp;colony &nbsp;cycle &nbsp;spread &nbsp;reach</span>
+        <span class="legend-note">— opens or declares something</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:var(--syn-ender)"></div>
+        <span class="legend-sample ms-ender">harvest &nbsp;bloom &nbsp;wither &nbsp;dormant</span>
+        <span class="legend-note">— ends, outputs, or exits</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:var(--syn-operator)"></div>
+        <span class="legend-sample ms-operator">&lt;~&nbsp;&nbsp;~&gt;&nbsp;&nbsp;=&gt;&nbsp;&nbsp;[~&nbsp;&nbsp;~]</span>
+        <span class="legend-note">— operators and block delimiters</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:var(--syn-string)"></div>
+        <span class="legend-sample ms-string">"hello" &nbsp;42 &nbsp;true</span>
+        <span class="legend-note">— values: strings, numbers, booleans</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:var(--syn-comment)"></div>
+        <span class="legend-sample ms-comment">~~ this is a comment</span>
+        <span class="legend-note">— comments (to end of line)</span>
+      </div>
+    </div>
+
+    <pre><code id="guide-out"></code></pre>
+  </div>
+</section>
+
+<!-- ════════════════════════ SIDE-BY-SIDE COMPARE ═════════════════════════ -->
+<section class="section section--pale">
+  <div class="section-inner wide">
+    <p class="section-eyebrow">Side by side</p>
+    <h2 class="section-title">Fibonacci — Moss vs JavaScript vs Python</h2>
+    <p class="section-desc">
+      The same recursive Fibonacci function, written in three languages.
+      Notice how Moss's guard clause (<code>=&gt;</code>) replaces a full <code>if/return</code>,
+      and <code>cycle</code> replaces <code>while</code>.
+    </p>
+
+    <div class="compare-grid">
+      <!-- Moss -->
+      <div class="compare-col compare-col--moss">
+        <div class="compare-header">Moss</div>
+        <pre><code id="fib-moss-out"></code></pre>
+      </div>
+
+      <!-- JavaScript -->
+      <div class="compare-col compare-col--js">
+        <div class="compare-header">JavaScript</div>
+        <pre><code>function fib(n) {
+  if (n &lt;= 1) return n;
+  return fib(n - 1) + fib(n - 2);
+}
+
+let i = 0;
+while (i &lt;= 10) {
+  console.log(fib(i));
+  i++;
+}</code></pre>
+      </div>
+
+      <!-- Python -->
+      <div class="compare-col compare-col--py">
+        <div class="compare-header">Python</div>
+        <pre><code>def fib(n):
+    if n &lt;= 1:
+        return n
+    return fib(n - 1) + fib(n - 2)
+
+i = 0
+while i &lt;= 10:
+    print(fib(i))
+    i += 1</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FEATURED EXAMPLES ═════════════════════════════ -->
+<section class="section section--light">
+  <div class="section-inner wide">
+    <p class="section-eyebrow">Featured examples</p>
+    <h2 class="section-title">See the full language in action</h2>
+    <p class="section-desc">
+      Three programs that each highlight a different corner of Moss.
+      Visit the <a href="examples.html" style="color:var(--c-moss)">Examples page</a> for all six.
+    </p>
+
+    <div class="example-grid">
+
+      <!-- Fibonacci -->
+      <div class="example-card">
+        <div class="card-header">
+          <div class="card-dots"><span></span><span></span><span></span></div>
+          <h3>fibonacci.moss</h3>
+        </div>
+        <div class="card-body">
+          <pre><code id="fib-card-out"></code></pre>
+        </div>
+        <div class="card-footer">Guard clauses &amp; recursion</div>
+      </div>
+
+      <!-- Colony -->
+      <div class="example-card">
+        <div class="card-header">
+          <div class="card-dots"><span></span><span></span><span></span></div>
+          <h3>colony_creatures.moss</h3>
+        </div>
+        <div class="card-body">
+          <pre><code id="colony-card-out"></code></pre>
+        </div>
+        <div class="card-footer">Prototype-based objects &amp; inheritance</div>
+      </div>
+
+      <!-- Graph -->
+      <div class="example-card">
+        <div class="card-header">
+          <div class="card-dots"><span></span><span></span><span></span></div>
+          <h3>graph_traverse.moss</h3>
+        </div>
+        <div class="card-body">
+          <pre><code id="graph-card-out"></code></pre>
+        </div>
+        <div class="card-footer">First-class graphs &amp; BFS traversal</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ FOOTER ═══════════════════════════════════ -->
+<footer>
+  <p>
+    <strong>Moss</strong> &mdash; grow something beautiful
+  </p>
+  <p>
+    By <a href="https://github.com/ethxnwzng" target="_blank" rel="noopener">Ethan Wong</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://github.com/ethxnwzng/mosslang" target="_blank" rel="noopener">GitHub</a>
+    &nbsp;&middot;&nbsp;
+    <a href="examples.html">Examples</a>
+    &nbsp;&middot;&nbsp;
+    <a href="glossary.html">Glossary</a>
+  </p>
+  <p style="opacity:0.45;font-size:0.82rem;margin-top:0.4rem;">
+    CMSI 3802 &mdash; Languages and Automata II &mdash; LMU
+  </p>
+</footer>
+
+<!-- ═════════════════════════ CODE SOURCES ════════════════════════════════ -->
+
+<script type="text/x-moss" id="guide">
+~~ colony with methods and prototypal inheritance
+
+sprout creature <~ colony [~
+    name  <~ "creature"
+    lives <~ 3
+
+    grow isAlive() [~
+        harvest self.lives > 0
+    ~]
+
+    grow describe() [~
+        bloom self.name
+    ~]
+~]
+
+sprout wolf <~ creature grows [~
+    name  <~ "wolf"
+    lives <~ 5
+
+    grow howl() [~
+        bloom "Awoooo!"
+    ~]
+~]
+
+wolf.isAlive() => wolf.describe()
+wolf.howl()
+</script>
+
+<script type="text/x-moss" id="fib-moss">
+grow fib(n) [~
+    n <= 1 => harvest n
+    harvest fib(n - 1) + fib(n - 2)
+~]
+
+sprout i <~ 0
+cycle i <= 10 [~
+    bloom fib(i)
+    i <~ i + 1
+~]
+</script>
+
+<script type="text/x-moss" id="fib-card">
+~~ Fibonacci — guard clauses, recursion
+
+grow fib(n) [~
+    n <= 1 => harvest n
+    harvest fib(n - 1) + fib(n - 2)
+~]
+
+sprout i <~ 0
+cycle i <= 10 [~
+    bloom fib(i)
+    i <~ i + 1
+~]
+</script>
+
+<script type="text/x-moss" id="colony-card">
+~~ Colonies and prototypal inheritance
+
+sprout creature <~ colony [~
+    name  <~ "creature"
+    lives <~ 3
+
+    grow describe() [~
+        bloom self.name
+    ~]
+
+    grow isAlive() [~
+        harvest self.lives > 0
+    ~]
+~]
+
+sprout wolf <~ creature grows [~
+    name  <~ "wolf"
+    lives <~ 5
+
+    grow howl() [~
+        bloom "Awoooo!"
+    ~]
+~]
+
+wolf.describe()
+wolf.howl()
+wolf.isAlive() => bloom "The wolf lives on."
+</script>
+
+<script type="text/x-moss" id="graph-card">
+~~ Graph traversal — BFS spread/reach
+
+sprout forest <~ graph [~
+    node root
+    node oak
+    node pine
+    node fern
+    node moss
+    edge root -> oak   weight 3
+    edge root -> pine  weight 5
+    edge oak  -> fern  weight 2
+    edge pine -> moss  weight 1
+    edge fern -> moss  weight 4
+~]
+
+bloom "BFS from root:"
+spread forest from root [~
+    reach current [~
+        bloom current
+    ~]
+~]
+</script>
+
+</body>
+</html>

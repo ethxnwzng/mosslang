@@ -1,0 +1,31 @@
+~~ Calculator — arithmetic, pipeline, guard clauses
+
+grow add(a, b)      [~ harvest a + b ~]
+grow subtract(a, b) [~ harvest a - b ~]
+grow multiply(a, b) [~ harvest a * b ~]
+grow divide(a, b)   [~ harvest a / b ~]
+grow modulo(a, b)   [~ harvest a % b ~]
+
+grow abs(x) [~
+    x < 0 => harvest -x
+    harvest x
+~]
+
+grow max(a, b) [~
+    a >= b => harvest a
+    harvest b
+~]
+
+grow inRange(val, lo, hi) [~
+    harvest val >= lo and val <= hi
+~]
+
+bloom add(10, 5)
+bloom subtract(10, 5)
+bloom multiply(10, 5)
+bloom divide(10, 5)
+bloom modulo(10, 3)
+bloom abs(-42)
+bloom max(7, 13)
+bloom inRange(8, 1, 10)
+bloom inRange(15, 1, 10)

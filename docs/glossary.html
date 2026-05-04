@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glossary — Moss</title>
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="moss-highlight.js" defer></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.svg" alt="Moss" />
+  </a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="examples.html">Examples</a></li>
+    <li><a href="glossary.html" class="active">Glossary</a></li>
+    <li><a href="https://github.com/ethxnwzng/mosslang" target="_blank" rel="noopener">GitHub</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <h1>Glossary</h1>
+  <p>Keywords, operators, and the programming-language theory behind them</p>
+</div>
+
+<!-- ═══════════════════════ KEYWORDS ══════════════════════════════════════ -->
+<section class="section section--light">
+  <div class="section-inner">
+
+    <p class="section-eyebrow">Keywords</p>
+    <h2 class="section-title">What every word means</h2>
+    <p class="section-desc">
+      Moss has no general-purpose keywords like <code>var</code>, <code>function</code>,
+      or <code>return</code>. Every reserved word in the language was chosen to feel like
+      part of a living system. Below is the full set, grouped by what they do.
+    </p>
+
+    <div class="glossary-list">
+
+      <!-- grow -->
+      <div class="glossary-entry">
+        <div class="glossary-term">
+          <span class="kw ms-starter">grow</span>
+          <span class="pl-label">Function declaration</span>
+        </div>
+        <div class="glossary-def">
+          <h4>Declare a function</h4>
+          <p>
+            <code>grow</code> introduces a named function with parameters and a block body.
+            In PL theory this is a <strong>lambda abstraction</strong> — a binding of a name
+            to a value that, when applied to arguments, evaluates its body in an extended scope.
+            The name is bound in the surrounding environment so it can be called recursively.
+          </p>
+          <div class="def-example">
+            <pre><code id="ex-grow-out"></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- sprout -->
+      <div class="glossary-entry">
+        <div class="glossary-term">
+          <span class="kw ms-starter">sprout</span>
+          <span class="pl-label">Variable declaration</span>
+        </div>
+        <div class="glossary-def">
+          <h4>Declare a mutable variable</h4>
+          <p>
+            <code>sprout</code> introduces a new binding in the current <strong>lexical scope</strong>
+            and immediately assigns it a value via <code>&lt;~</code>. Moss is dynamically typed,
+            so no type annotation is needed — the variable can hold any value at runtime.
+            Re-assignment later in the same scope uses <code>&lt;~</code> without <code>sprout</code>.
+          </p>
+          <div class="def-example">
+            <pre><code id="ex-sprout-out"></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- bloom -->
+      <div class="glossary-entry">
+        <div class="glossary-term">
+          <span class="kw ms-ender">bloom</span>
+          <span class="pl-label">Output statement</span>
+        </div>
+        <div class="glossary-def">
+          <h4>Print a value</h4>
+          <p>
+            <code>bloom</code> is a <strong>statement</strong>, not a function — it evaluates
+            its argument expression and sends the result to standard output. It compiles directly
+            to <code>console.log(…)</code> in JavaScript. Because it is a statement and not
+            a value, it cannot appear as the right-hand side of an operator or assignment.
+          </p>
+          <div class="def-example">
+            <pre><code id="ex-bloom-out"></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- harvest -->
+      <div class="glossary-entry">
+        <div class="glossary-term">
+          <span class="kw ms-ender">harvest</span>
+          <span class="pl-label">Return statement</span>
+        </div>
+        <div class="glossary-def">
+          <h4>Return a value from a function</h4>
+          <p>
+            <code>harvest</code> is the <strong>early-exit mechanism</strong> for functions —
+            equivalent to <code>return</code>. The static analyzer enforces that
+            <code>harvest</code> can only appear inside a <code>grow</code> body;
+            using it at the top level is a compile-time error.
+            Combined with a guard clause it becomes a single-line early exit:
+            <code>n &lt;= 1 =&gt; harvest n</code>.
+          </p>
+          <div class="def-example">
+            <pre><code id="ex-harvest-out"></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- cycle -->
+      <div class="glossary-entry">
+        <div class="glossary-term">
+          <span class="kw ms-starter">cycle</span>
+          <span class="pl-label">While loop</span>
+        </div>
+        <div class="glossary-def">
+          <h4>Repeat while a condition holds</h4>
+          <p>
+            <code>cycle</code> is a <strong>head-tested loop</strong>: the condition is
+            evaluated before each iteration, and the body runs only when it is truthy.
+            It compiles to a JavaScript <code>while</code> loop. The optimizer can
+            constant-fold the condition — a known-false condition eliminates the loop body
+            entirely at compile time.
+          </p>
+          <div class="def-example">
+            <pre><code id="ex-cycle-out"></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- wither / dormant -->
+      <div class="glossary-entry">
+        <div class="glossary-term">
+          <span class="kw ms-ender">wither</span>
+          <span class="kw-alt ms-ender">dormant</span>
+          <span class="pl-label">Break / Continue</span>
+        </div>
+        <div class="glossary-def">
+          <h4>Exit or skip an iteration</h4>
+          <p>
+            <code>wither</code> terminates the enclosing loop immediately (like <code>break</code>).
+            <code>dormant</code> skips the rest of the current iteration and continues with the
+            next one (like <code>continue</code>). Both are <strong>structured jumps</strong> —
+            they can only appear inside a <code>cycle</code> body. The static analyzer rejects
+            either keyword outside a loop context at compile time.
+          </p>
+          <div class="def-example">
+            <pre><code id="ex-wither-out"></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- when / otherwise -->
+      <div class="glossary-entry">
+        <div class="glossary-term">
+          <span class="kw ms-starter">when</span>
+          <span class="kw-alt ms-starter">otherwise</span>
+          <span class="pl-label">If / Else</span>
+        </div>
+        <div class="glossary-def">
+          <h4>Two-armed conditional</h4>
+          <p>
+            <code>when … [~ … ~]</code> is the standard <strong>two-armed conditional</strong>
+            for blocks of code. The optional <code>otherwise</code> branch runs when the
+            condition is falsy. For simple one-liner conditions, the guard clause
+            <code>=&gt;</code> is preferred. The optimizer constant-folds
+            <code>when</code> — if the condition is a known boolean at compile time,
+            the dead branch is removed entirely.
+          </p>
+          <div class="def-example">
+            <pre><code id="ex-when-out"></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- colony -->
+      <div class="glossary-entry">
+        <div class="glossary-term">
+          <span class="kw ms-starter">colony</span>
+          <span class="pl-label">Prototype object</span>
+        </div>
+        <div class="glossary-def">
+          <h4>Define a prototype object</h4>
+          <p>
+            A <code>colony</code> block creates a <strong>prototype record</strong> —
+            a plain JavaScript object with named fields and methods.
+            There are no classes, no constructors, and no <code>new</code> keyword.
+            This is <strong>prototype-based OOP</strong> in the same spirit as early
+            Self or Lua: objects are just objects, and inheritance is a matter of
+            delegation, not class hierarchy.
+          </p>
+          <div class="def-example">
+            <pre><code id="ex-colony-out"></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- grows -->
+      <div class="glossary-entry">
+        <div class="glossary-term">
+          <span class="kw ms-starter">grows</span>
+          <span class="pl-label">Prototypal inheritance</span>
+        </div>
+        <div class="glossary-def">
+          <h4>Inherit from a colony</h4>
+          <p>
+            <code>B grows [~ … ~]</code> creates a new object whose prototype is <code>B</code>,
+            then overlays the fields defined in the block. It compiles to
+            <code>Object.assign(Object.create(B), { … })</code>. This is
+            <strong>differential inheritance</strong> — you only specify what changes;
+            everything else is looked up on the prototype chain at runtime.
+            The analyzer checks that the left-hand side is a colony-typed value.
+          </p>
+          <div class="def-example">
+            <pre><code id="ex-grows-out"></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- self -->
+      <div class="glossary-entry">
+        <div class="glossary-term">
+          <span class="kw ms-starter">self</span>
+          <span class="pl-label">Receiver reference</span>
+        </div>
+        <div class="glossary-def">
+          <h4>Refer to the current object inside a method</h4>
+          <p>
+            <code>self</code> is the equivalent of <code>this</code> in JavaScript or Python.
+            It refers to the object on which the method is being called.
+            The static analyzer enforces that <code>self</code> can only appear inside
+            a <code>colony</code> method body — using it at the top level is a compile-time error.
+            This is a <strong>contextual constraint</strong> enforced during semantic analysis.
+          </p>
+        </div>
+      </div>
+
+      <!-- graph -->
+      <div class="glossary-entry">
+        <div class="glossary-term">
+          <span class="kw ms-starter">graph</span>
+          <span class="pl-label">Graph literal</span>
+        </div>
+        <div class="glossary-def">
+          <h4>Declare a first-class weighted graph</h4>
+          <p>
+            A <code>graph [~ … ~]</code> block is a <strong>graph literal</strong> —
+            a compile-time structure that declares nodes and directed, weighted edges.
+            The compiler validates that every node referenced in an <code>edge</code>
+            declaration was declared with <code>node</code>. This is a
+            <strong>static integrity check</strong> unique to Moss's type system.
+          </p>
+          <div class="def-example">
+            <pre><code id="ex-graph-out"></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- spread / reach -->
+      <div class="glossary-entry">
+        <div class="glossary-term">
+          <span class="kw ms-starter">spread</span>
+          <span class="kw-alt ms-starter">reach</span>
+          <span class="pl-label">BFS graph traversal</span>
+        </div>
+        <div class="glossary-def">
+          <h4>Traverse a graph breadth-first</h4>
+          <p>
+            <code>spread G from start [~ reach current [~ … ~] ~]</code> performs a
+            <strong>breadth-first search</strong> starting at <code>start</code>,
+            visiting each reachable node exactly once. The <code>reach</code> sub-block
+            receives each visited node as <code>current</code>. It compiles to a
+            <code>while</code> loop with a queue and a visited <code>Set</code>.
+            The analyzer checks that the target of <code>spread</code> is a graph-typed variable.
+          </p>
+          <div class="def-example">
+            <pre><code id="ex-spread-out"></code></pre>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ OPERATORS ═════════════════════════════════════ -->
+<section class="section section--dark">
+  <div class="section-inner">
+
+    <p class="section-eyebrow">Operators</p>
+    <h2 class="section-title">The symbols and what they mean</h2>
+    <p class="section-desc">
+      Moss uses symbolic operators instead of words for its most structurally important
+      operations. The direction of the arrows is not accidental — each points in the
+      direction data or control flows.
+    </p>
+
+    <div class="glossary-list">
+
+      <div class="glossary-entry" style="border-bottom-color:rgba(210,243,220,0.12)">
+        <div class="glossary-term">
+          <span class="kw ms-operator">&lt;~</span>
+          <span class="pl-label">Assignment</span>
+        </div>
+        <div class="glossary-def" style="color:var(--c-pale)">
+          <h4 style="color:var(--c-pale)">Assign a value to a name</h4>
+          <p style="color:var(--c-mint);opacity:0.85">
+            The arrow points <em>left</em>: a value flows from the right-hand expression
+            into the name on the left. This mirrors mathematical notation where the
+            destination comes first. Both <code>sprout</code> declarations and bare
+            re-assignments use <code>&lt;~</code>. The operator has the lowest precedence
+            among expressions — everything on the right is fully evaluated first.
+          </p>
+        </div>
+      </div>
+
+      <div class="glossary-entry" style="border-bottom-color:rgba(210,243,220,0.12)">
+        <div class="glossary-term">
+          <span class="kw ms-operator">~&gt;</span>
+          <span class="pl-label">Pipeline</span>
+        </div>
+        <div class="glossary-def" style="color:var(--c-pale)">
+          <h4 style="color:var(--c-pale)">Pipe a value into a function</h4>
+          <p style="color:var(--c-mint);opacity:0.85">
+            The arrow points <em>right</em>: a value flows from the left into the function
+            on the right. <code>x ~&gt; f</code> is <strong>syntactic sugar</strong> for
+            <code>f(x)</code>. Chaining is left-associative:
+            <code>x ~&gt; double ~&gt; show</code> becomes <code>show(double(x))</code>.
+            In PL theory this is <strong>reverse function application</strong>, popularized
+            by F#, Elixir, and Elm — it lets you read a data transformation in the order
+            it happens rather than inside-out.
+          </p>
+        </div>
+      </div>
+
+      <div class="glossary-entry" style="border-bottom-color:rgba(210,243,220,0.12)">
+        <div class="glossary-term">
+          <span class="kw ms-operator">=&gt;</span>
+          <span class="pl-label">Guard clause</span>
+        </div>
+        <div class="glossary-def" style="color:var(--c-pale)">
+          <h4 style="color:var(--c-pale)">Execute a statement if a condition is true</h4>
+          <p style="color:var(--c-mint);opacity:0.85">
+            A <strong>one-armed conditional</strong>: if the left expression is truthy,
+            the statement on the right executes; otherwise nothing happens and execution
+            continues. This is semantically equivalent to <code>if (cond) { stmt }</code>
+            in JavaScript, but without the syntactic noise. The optimizer constant-folds
+            it — a literal <code>true</code> condition is eliminated, leaving only the
+            statement; a literal <code>false</code> condition removes the entire guard.
+          </p>
+        </div>
+      </div>
+
+      <div class="glossary-entry" style="border-bottom-color:rgba(210,243,220,0.12)">
+        <div class="glossary-term">
+          <span class="kw ms-operator">[~&nbsp;&nbsp;~]</span>
+          <span class="pl-label">Block delimiter</span>
+        </div>
+        <div class="glossary-def" style="color:var(--c-pale)">
+          <h4 style="color:var(--c-pale)">Open and close a block of statements</h4>
+          <p style="color:var(--c-mint);opacity:0.85">
+            <code>[~</code> opens and <code>~]</code> closes every block in Moss —
+            function bodies, loop bodies, colony definitions, graph literals, and conditional
+            branches. The <code>~</code> on the inside keeps the delimiters visually distinct
+            from all arithmetic and comparison operators. Unlike Python, indentation is not
+            syntactically significant; unlike JavaScript, single-statement bodies still need
+            delimiters.
+          </p>
+        </div>
+      </div>
+
+      <div class="glossary-entry" style="border-bottom-color:none">
+        <div class="glossary-term">
+          <span class="kw ms-operator">-&gt;</span>
+          <span class="pl-label">Edge direction</span>
+        </div>
+        <div class="glossary-def" style="color:var(--c-pale)">
+          <h4 style="color:var(--c-pale)">Declare a directed edge in a graph</h4>
+          <p style="color:var(--c-mint);opacity:0.85">
+            Used only inside a <code>graph [~ … ~]</code> block:
+            <code>edge A -&gt; B weight N</code> declares a directed edge from node
+            <code>A</code> to node <code>B</code> with a numeric weight.
+            Both nodes must have been declared with <code>node</code> earlier in the
+            same graph block — the analyzer enforces this at compile time.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ PL THEORY ═════════════════════════════════════ -->
+<section class="section section--cream">
+  <div class="section-inner">
+
+    <p class="section-eyebrow">PL Theory</p>
+    <h2 class="section-title">Concepts behind the compiler</h2>
+    <p class="section-desc">
+      Moss is compiled in four passes. Here is the theory behind each one
+      and behind the more advanced language features.
+    </p>
+
+    <div class="glossary-list">
+
+      <div class="glossary-entry">
+        <div class="glossary-term">
+          <span class="kw" style="color:var(--c-moss)">Parse</span>
+          <span class="pl-label">Phase 1</span>
+        </div>
+        <div class="glossary-def">
+          <h4>Grammar &amp; PEG parsing</h4>
+          <p>
+            The grammar is written in <strong>Ohm</strong>, a PEG (Parsing Expression Grammar)
+            library. PEG grammars are <em>unambiguous by construction</em> — each rule tries
+            alternatives in order and the first match wins. Semantic actions in
+            <code>parser.js</code> walk the parse tree and produce an
+            <strong>Abstract Syntax Tree (AST)</strong>: a tree of JavaScript objects where
+            each node type corresponds to one syntactic construct (e.g. <code>FunDecl</code>,
+            <code>GuardStmt</code>, <code>PipeExp</code>).
+          </p>
+        </div>
+      </div>
+
+      <div class="glossary-entry">
+        <div class="glossary-term">
+          <span class="kw" style="color:var(--c-moss)">Analyze</span>
+          <span class="pl-label">Phase 2</span>
+        </div>
+        <div class="glossary-def">
+          <h4>Scope, binding, and contextual constraints</h4>
+          <p>
+            The analyzer walks the AST and enforces rules that the grammar alone cannot express.
+            It maintains a <strong>context stack</strong> that tracks: whether we are inside a
+            function (to validate <code>harvest</code>), inside a loop (to validate
+            <code>wither</code> and <code>dormant</code>), and inside a colony method
+            (to validate <code>self</code>). It also checks that <code>spread</code> targets
+            are graph-typed and that <code>grows</code> operands are colony-typed.
+            These are <strong>static semantic checks</strong> — errors caught before any code runs.
+          </p>
+        </div>
+      </div>
+
+      <div class="glossary-entry">
+        <div class="glossary-term">
+          <span class="kw" style="color:var(--c-moss)">Optimize</span>
+          <span class="pl-label">Phase 3</span>
+        </div>
+        <div class="glossary-def">
+          <h4>Constant folding &amp; dead code elimination</h4>
+          <p>
+            The optimizer performs <strong>constant folding</strong>: arithmetic on two known
+            numbers is evaluated at compile time (<code>2 + 3</code> becomes <code>5</code>).
+            Boolean short-circuits are collapsed. Guard clauses with a known-true condition
+            become the consequent alone; known-false guards become empty.
+            <code>when</code> and <code>cycle</code> statements with constant conditions are
+            simplified similarly. Code after <code>harvest</code>, <code>wither</code>, or
+            <code>dormant</code> in the same block is <strong>dead code</strong> and is dropped.
+          </p>
+        </div>
+      </div>
+
+      <div class="glossary-entry">
+        <div class="glossary-term">
+          <span class="kw" style="color:var(--c-moss)">Generate</span>
+          <span class="pl-label">Phase 4</span>
+        </div>
+        <div class="glossary-def">
+          <h4>AST-to-JavaScript code generation</h4>
+          <p>
+            The generator walks the (possibly optimized) AST and emits a JavaScript string.
+            Each AST node type maps to a code template.
+            The pipeline operator <code>~&gt;</code> becomes nested function application
+            (<code>f(x)</code>). Guard clauses become <code>if (cond) { … }</code>.
+            Colony declarations become object literals; <code>grows</code> becomes
+            <code>Object.assign(Object.create(…), { … })</code>. Graph literals become
+            a data structure; <code>spread/reach</code> becomes a BFS
+            <code>while</code> loop with a queue and a visited <code>Set</code>.
+          </p>
+        </div>
+      </div>
+
+      <div class="glossary-entry">
+        <div class="glossary-term">
+          <span class="kw" style="color:var(--c-moss)">Lexical scope</span>
+          <span class="pl-label">Scoping</span>
+        </div>
+        <div class="glossary-def">
+          <h4>Names are resolved where they are written, not where they are called</h4>
+          <p>
+            Moss uses <strong>lexical (static) scoping</strong>: a name's meaning is determined
+            by where it appears in the source text, not where the function is called from.
+            A function body can reference names from its enclosing scope (closure), and those
+            names are resolved at parse time rather than at runtime.
+            The analyzer builds and tears down environment frames as it enters and exits scopes.
+          </p>
+        </div>
+      </div>
+
+      <div class="glossary-entry">
+        <div class="glossary-term">
+          <span class="kw" style="color:var(--c-moss)">Dynamic typing</span>
+          <span class="pl-label">Type system</span>
+        </div>
+        <div class="glossary-def">
+          <h4>Types are checked at runtime, not compile time</h4>
+          <p>
+            Moss is <strong>dynamically typed</strong>: variables have no declared type,
+            and type errors surface at runtime rather than at compile time.
+            The exceptions are the structural constraints described above —
+            graph-edge integrity, colony/grows type pairing — which are
+            <strong>structural static checks</strong> unique to Moss's domain types.
+            Everything else follows JavaScript's runtime semantics.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <strong>Moss</strong> &mdash; grow something beautiful
+  </p>
+  <p>
+    By <a href="https://github.com/ethxnwzng" target="_blank" rel="noopener">Ethan Wong</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://github.com/ethxnwzng/mosslang" target="_blank" rel="noopener">GitHub</a>
+    &nbsp;&middot;&nbsp;
+    <a href="index.html">Home</a>
+    &nbsp;&middot;&nbsp;
+    <a href="examples.html">Examples</a>
+  </p>
+</footer>
+
+<!-- CODE SOURCES -->
+
+<script type="text/x-moss" id="ex-grow">
+grow add(a, b) [~
+    harvest a + b
+~]
+
+grow fib(n) [~
+    n <= 1 => harvest n
+    harvest fib(n - 1) + fib(n - 2)
+~]
+</script>
+
+<script type="text/x-moss" id="ex-sprout">
+sprout count <~ 0
+sprout name  <~ "moss"
+
+count <~ count + 1
+bloom count
+</script>
+
+<script type="text/x-moss" id="ex-bloom">
+bloom "hello, world"
+bloom 42
+bloom true
+</script>
+
+<script type="text/x-moss" id="ex-harvest">
+grow max(a, b) [~
+    a >= b => harvest a
+    harvest b
+~]
+
+bloom max(7, 3)
+</script>
+
+<script type="text/x-moss" id="ex-cycle">
+sprout i <~ 1
+cycle i <= 5 [~
+    bloom i
+    i <~ i + 1
+~]
+</script>
+
+<script type="text/x-moss" id="ex-wither">
+sprout n <~ 0
+cycle n < 20 [~
+    n <~ n + 1
+    n % 2 != 0 => dormant
+    n % 10 == 0 => wither
+    bloom n
+~]
+</script>
+
+<script type="text/x-moss" id="ex-when">
+sprout score <~ 88
+
+when score >= 90 [~
+    bloom "A"
+~] otherwise [~
+    bloom "not quite"
+~]
+</script>
+
+<script type="text/x-moss" id="ex-colony">
+sprout animal <~ colony [~
+    name  <~ "unknown"
+    sound <~ "..."
+
+    grow speak() [~
+        bloom self.name
+        bloom self.sound
+    ~]
+~]
+</script>
+
+<script type="text/x-moss" id="ex-grows">
+sprout animal <~ colony [~
+    name  <~ "animal"
+
+    grow describe() [~
+        bloom self.name
+    ~]
+~]
+
+sprout cat <~ animal grows [~
+    name  <~ "cat"
+    sound <~ "meow"
+~]
+
+cat.describe()
+</script>
+
+<script type="text/x-moss" id="ex-graph">
+sprout g <~ graph [~
+    node a
+    node b
+    node c
+    edge a -> b weight 1
+    edge b -> c weight 2
+~]
+</script>
+
+<script type="text/x-moss" id="ex-spread">
+sprout g <~ graph [~
+    node root
+    node left
+    node right
+    edge root -> left  weight 1
+    edge root -> right weight 1
+~]
+
+spread g from root [~
+    reach current [~
+        bloom current
+    ~]
+~]
+</script>
+
+</body>
+</html>
