@@ -397,39 +397,79 @@ pre code {
   margin: 1.75rem 0 2rem;
   background: var(--c-darkest);
   border-radius: 12px;
-  padding: 1.25rem 1.5rem;
+  padding: 1.5rem;
   flex-wrap: wrap;
   border: 1px solid rgba(82,183,136,0.15);
 }
 
 .pipeline-step {
   flex: 1;
-  min-width: 120px;
+  min-width: 160px;
 }
 
 .pipeline-name {
   font-family: 'Courier New', monospace;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: var(--syn-starter);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.3rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
 }
 
 .pipeline-detail {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--c-mint);
-  opacity: 0.7;
+  opacity: 0.75;
+  line-height: 1.45;
+  margin-bottom: 0.5rem;
+}
+
+.pipeline-detail code {
+  font-size: 0.76rem;
+  color: var(--syn-string);
+  font-family: 'Courier New', monospace;
+}
+
+.pipeline-facts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pipeline-facts li {
+  font-size: 0.76rem;
+  color: var(--c-mint);
+  opacity: 0.58;
   line-height: 1.4;
+  padding-left: 0.85rem;
+  position: relative;
+}
+
+.pipeline-facts li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--syn-ender);
+  opacity: 0.7;
+}
+
+.pipeline-facts code {
+  font-size: 0.73rem;
+  color: var(--syn-string);
+  font-family: 'Courier New', monospace;
 }
 
 .pipeline-sep {
   color: var(--syn-ender);
   font-size: 1rem;
-  padding: 0 0.75rem;
-  padding-top: 0.1rem;
+  padding: 0 0.6rem;
+  padding-top: 0.05rem;
   flex-shrink: 0;
+  opacity: 0.8;
 }
 
 /* ─── Compiled output ────────────────────────────── */

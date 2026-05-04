@@ -140,25 +140,52 @@
     <p class="section-desc">Each construct maps directly to a JavaScript equivalent — no runtime required.</p>
 
     <div class="pipeline-strip">
+
       <div class="pipeline-step">
         <div class="pipeline-name">Parser</div>
-        <div class="pipeline-detail">Ohm.js grammar reads Moss source into a parse tree</div>
+        <div class="pipeline-detail">Ohm.js matches source against the formal grammar in <code>moss.ohm</code> and builds a typed AST</div>
+        <ul class="pipeline-facts">
+          <li>Operator precedence encoded across 7 expression levels (<code>Exp</code> → <code>Exp7</code>)</li>
+          <li>Each rule produces a typed node — <code>FunDecl</code>, <code>GraphLit</code>, <code>PipeExp</code>, <code>CycleStmt</code></li>
+        </ul>
       </div>
+
       <div class="pipeline-sep">→</div>
+
       <div class="pipeline-step">
         <div class="pipeline-name">Analyzer</div>
-        <div class="pipeline-detail">Semantic checks — scope, types, contextual rules</div>
+        <div class="pipeline-detail">Walks the AST with a parent-chained lexical scope stack</div>
+        <ul class="pipeline-facts">
+          <li>Tracks four context flags: <code>inFunction</code>, <code>inLoop</code>, <code>inColony</code>, <code>inSpread</code></li>
+          <li>Enforces contextual rules — <code>harvest</code> outside <code>grow</code>, <code>spread</code> on non-graphs, argument count mismatches</li>
+          <li>Type-tags variables: <code>GraphLit</code> → graph, <code>ColonyLit</code> → colony</li>
+        </ul>
       </div>
+
       <div class="pipeline-sep">→</div>
+
       <div class="pipeline-step">
         <div class="pipeline-name">Optimizer</div>
-        <div class="pipeline-detail">Constant folding and dead-code elimination</div>
+        <div class="pipeline-detail">Transforms the AST to eliminate unnecessary work before code generation</div>
+        <ul class="pipeline-facts">
+          <li>Constant folds numeric and boolean expressions at compile time (<code>2 + 3</code> → <code>5</code>)</li>
+          <li>Dead branch removal: <code>when true</code> inlines the block, <code>cycle false</code> → empty</li>
+          <li>Trims unreachable statements after <code>harvest</code>, <code>wither</code>, or <code>dormant</code></li>
+        </ul>
       </div>
+
       <div class="pipeline-sep">→</div>
+
       <div class="pipeline-step">
         <div class="pipeline-name">Generator</div>
-        <div class="pipeline-detail">Walks the AST and emits clean JavaScript</div>
+        <div class="pipeline-detail">Walks the optimized AST and emits JavaScript strings</div>
+        <ul class="pipeline-facts">
+          <li><code>spread/reach</code> expands to a full BFS — queue, visited <code>Set</code>, adjacency <code>Map</code></li>
+          <li><code>grows</code> emits <code>Object.assign(Object.create(base), {…})</code>; <code>self</code> → <code>this</code></li>
+          <li><code>bloom</code> → <code>console.log</code>, <code>harvest</code> → <code>return</code>, <code>wither</code> → <code>break</code></li>
+        </ul>
       </div>
+
     </div>
 
     <div class="compile-grid">
