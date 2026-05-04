@@ -337,6 +337,23 @@ pre code {
   font-style: italic;
 }
 
+/* ─── Graph diagram ──────────────────────────────── */
+.graph-diagram-wrap {
+  background: var(--c-darkest);
+  border-radius: 14px;
+  padding: 1.5rem 1rem 0.75rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(82,183,136,0.18);
+}
+
+.graph-diagram {
+  width: 100%;
+  max-width: 640px;
+  display: block;
+  margin: 0 auto;
+  height: auto;
+}
+
 /* ─── Guide two-column code pair ─────────────────── */
 .guide-pair {
   display: grid;
