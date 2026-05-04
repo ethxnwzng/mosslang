@@ -337,39 +337,71 @@ pre code {
   font-style: italic;
 }
 
-/* ─── Feature list ───────────────────────────────── */
-.features {
+/* ─── Keyword glossary ───────────────────────────── */
+.kw-glossary {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 3rem;
   margin-top: 2rem;
 }
 
-.feature {
-  padding: 1.5rem 1.75rem;
-  background: var(--c-white);
-  border-radius: 14px;
-  border: 1px solid rgba(64,145,108,0.15);
-}
-
-.feature-icon {
-  font-size: 1.75rem;
+.kw-group-label {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 700;
   margin-bottom: 0.6rem;
-  display: block;
+  font-family: 'EB Garamond', serif;
 }
 
-.feature h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--t-dark);
-  margin-bottom: 0.3rem;
+.kw-list {
+  border: 1px solid rgba(64,145,108,0.16);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--c-white);
 }
 
-.feature p {
-  font-size: 0.96rem;
+.kw-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  align-items: center;
+  padding: 0.46rem 1rem;
+  border-bottom: 1px solid rgba(64,145,108,0.09);
+  gap: 0.75rem;
+}
+
+.kw-row:last-child { border-bottom: none; }
+
+.kw-token {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.kw-desc {
+  font-size: 0.88rem;
   color: var(--t-muted);
-  line-height: 1.6;
+  line-height: 1.4;
 }
+
+.kw-desc code {
+  font-size: 0.83rem;
+  color: var(--c-moss);
+}
+
+/* ─── JS syntax tokens ───────────────────────────── */
+.js-kw      { color: #f7df1e; }
+.js-string  { color: #ce9178; }
+.js-number  { color: #b5cea8; }
+.js-comment { color: #6a9955; font-style: italic; }
+.js-builtin { color: #9cdcfe; }
+
+/* ─── Python syntax tokens ───────────────────────── */
+.py-kw      { color: #4eb8f1; }
+.py-string  { color: #ce9178; }
+.py-number  { color: #b5cea8; }
+.py-comment { color: #6a9955; font-style: italic; }
+.py-builtin { color: #dcdcaa; }
 
 /* ─── Page header (inner pages) ─────────────────── */
 .page-header {
@@ -513,5 +545,6 @@ footer a:hover { text-decoration: underline; }
   .section { padding: 3.5rem 1.25rem; }
   h2.section-title { font-size: 2rem; }
   .example-grid { grid-template-columns: 1fr; }
-  .features { grid-template-columns: 1fr; }
+  .kw-glossary { grid-template-columns: 1fr; }
+  .kw-row { grid-template-columns: 100px 1fr; }
 }

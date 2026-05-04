@@ -48,55 +48,45 @@
       something alive: things <em>sprout</em>, functions <em>grow</em>, results <em>bloom</em>.
     </p>
 
-    <div class="features">
-      <div class="feature">
-        <span class="feature-icon">&#127807;</span>
-        <h3>Nature-first keywords</h3>
-        <p>
-          <code>grow</code> declares functions. <code>sprout</code> declares variables.
-          <code>bloom</code> prints. <code>harvest</code> returns. Every word has a reason.
-        </p>
+    <!-- ── Keyword quick-reference ── -->
+    <div class="kw-glossary">
+
+      <div class="kw-group">
+        <div class="kw-group-label" style="color:var(--syn-starter)">Starters — open or declare</div>
+        <div class="kw-list">
+          <div class="kw-row"><span class="kw-token ms-starter">grow</span><span class="kw-desc">declare a function</span></div>
+          <div class="kw-row"><span class="kw-token ms-starter">sprout</span><span class="kw-desc">declare a variable</span></div>
+          <div class="kw-row"><span class="kw-token ms-starter">cycle</span><span class="kw-desc">loop while condition holds</span></div>
+          <div class="kw-row"><span class="kw-token ms-starter">when</span><span class="kw-desc">conditional block</span></div>
+          <div class="kw-row"><span class="kw-token ms-starter">otherwise</span><span class="kw-desc">else branch of <code>when</code></span></div>
+          <div class="kw-row"><span class="kw-token ms-starter">colony</span><span class="kw-desc">create a prototype object</span></div>
+          <div class="kw-row"><span class="kw-token ms-starter">grows</span><span class="kw-desc">inherit from a colony</span></div>
+          <div class="kw-row"><span class="kw-token ms-starter">self</span><span class="kw-desc">current object inside a method</span></div>
+          <div class="kw-row"><span class="kw-token ms-starter">graph</span><span class="kw-desc">first-class weighted graph</span></div>
+          <div class="kw-row"><span class="kw-token ms-starter">spread</span><span class="kw-desc">BFS traversal over a graph</span></div>
+          <div class="kw-row"><span class="kw-token ms-starter">reach</span><span class="kw-desc">callback for each visited node</span></div>
+        </div>
       </div>
-      <div class="feature">
-        <span class="feature-icon">&#128279;</span>
-        <h3>Pipeline operator</h3>
-        <p>
-          Chain calls left-to-right with <code>~&gt;</code>: <code>x ~&gt; double ~&gt; show</code>
-          reads exactly like a data flow — no nested parentheses.
-        </p>
+
+      <div class="kw-group">
+        <div class="kw-group-label" style="color:var(--syn-ender)">Enders — output or exit</div>
+        <div class="kw-list">
+          <div class="kw-row"><span class="kw-token ms-ender">bloom</span><span class="kw-desc">print a value to output</span></div>
+          <div class="kw-row"><span class="kw-token ms-ender">harvest</span><span class="kw-desc">return a value from a function</span></div>
+          <div class="kw-row"><span class="kw-token ms-ender">wither</span><span class="kw-desc">break out of a loop</span></div>
+          <div class="kw-row"><span class="kw-token ms-ender">dormant</span><span class="kw-desc">skip to the next iteration</span></div>
+        </div>
+
+        <div class="kw-group-label" style="color:var(--syn-operator);margin-top:1.5rem">Operators</div>
+        <div class="kw-list">
+          <div class="kw-row"><span class="kw-token ms-operator">&lt;~</span><span class="kw-desc">assign (value flows left)</span></div>
+          <div class="kw-row"><span class="kw-token ms-operator">~&gt;</span><span class="kw-desc">pipe into a function (left-to-right)</span></div>
+          <div class="kw-row"><span class="kw-token ms-operator">=&gt;</span><span class="kw-desc">guard — run if condition is true</span></div>
+          <div class="kw-row"><span class="kw-token ms-operator">[~ &nbsp;~]</span><span class="kw-desc">open and close a block</span></div>
+          <div class="kw-row"><span class="kw-token ms-operator">~~</span><span class="kw-desc">comment to end of line</span></div>
+        </div>
       </div>
-      <div class="feature">
-        <span class="feature-icon">&#128737;</span>
-        <h3>Guard clauses</h3>
-        <p>
-          One-armed conditionals with <code>=&gt;</code>: <code>n &lt;= 0 =&gt; harvest 0</code>
-          keeps early exits crisp and readable.
-        </p>
-      </div>
-      <div class="feature">
-        <span class="feature-icon">&#127795;</span>
-        <h3>Prototype colonies</h3>
-        <p>
-          Objects are <code>colony</code> blocks. Inheritance is <code>grows</code>.
-          No <code>class</code> keyword, no <code>new</code> — just living prototypes.
-        </p>
-      </div>
-      <div class="feature">
-        <span class="feature-icon">&#128202;</span>
-        <h3>First-class graphs</h3>
-        <p>
-          Declare weighted graphs inline with <code>graph [~ node … edge … ~]</code>
-          and traverse them with <code>spread … from … reach</code>.
-        </p>
-      </div>
-      <div class="feature">
-        <span class="feature-icon">&#9889;</span>
-        <h3>Compile-time analysis</h3>
-        <p>
-          Static checks for scope, <code>harvest</code> outside functions,
-          <code>self</code> outside colonies, and type-correct <code>spread</code> targets.
-        </p>
-      </div>
+
     </div>
   </div>
 </section>
@@ -105,10 +95,8 @@
 <section class="section section--dark">
   <div class="section-inner">
     <p class="section-eyebrow">Reading Moss</p>
-    <h2 class="section-title">Every color tells you what a word does</h2>
     <p class="section-desc">
-      Moss uses two symbolic operators (<code style="color:var(--syn-operator)">&lt;~</code> and <code style="color:var(--syn-operator)">~&gt;</code>)
-      and two keyword families — things that <em>begin</em> and things that <em>end</em>.
+      Moss uses two keyword families and a set of symbolic operators.
       The colors below are consistent across every example on this site.
     </p>
 
@@ -150,98 +138,24 @@
     <p class="section-eyebrow">Side by side</p>
     <h2 class="section-title">Fibonacci — Moss vs JavaScript vs Python</h2>
     <p class="section-desc">
-      The same recursive Fibonacci function, written in three languages.
+      The same recursive Fibonacci function written in three languages.
       Notice how Moss's guard clause (<code>=&gt;</code>) replaces a full <code>if/return</code>,
       and <code>cycle</code> replaces <code>while</code>.
     </p>
 
     <div class="compare-grid">
-      <!-- Moss -->
       <div class="compare-col compare-col--moss">
         <div class="compare-header">Moss</div>
         <pre><code id="fib-moss-out"></code></pre>
       </div>
-
-      <!-- JavaScript -->
       <div class="compare-col compare-col--js">
         <div class="compare-header">JavaScript</div>
-        <pre><code>function fib(n) {
-  if (n &lt;= 1) return n;
-  return fib(n - 1) + fib(n - 2);
-}
-
-let i = 0;
-while (i &lt;= 10) {
-  console.log(fib(i));
-  i++;
-}</code></pre>
+        <pre><code id="fib-js-out"></code></pre>
       </div>
-
-      <!-- Python -->
       <div class="compare-col compare-col--py">
         <div class="compare-header">Python</div>
-        <pre><code>def fib(n):
-    if n &lt;= 1:
-        return n
-    return fib(n - 1) + fib(n - 2)
-
-i = 0
-while i &lt;= 10:
-    print(fib(i))
-    i += 1</code></pre>
+        <pre><code id="fib-py-out"></code></pre>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════ FEATURED EXAMPLES ═════════════════════════════ -->
-<section class="section section--light">
-  <div class="section-inner wide">
-    <p class="section-eyebrow">Featured examples</p>
-    <h2 class="section-title">See the full language in action</h2>
-    <p class="section-desc">
-      Three programs that each highlight a different corner of Moss.
-      Visit the <a href="examples.html" style="color:var(--c-moss)">Examples page</a> for all six.
-    </p>
-
-    <div class="example-grid">
-
-      <!-- Fibonacci -->
-      <div class="example-card">
-        <div class="card-header">
-          <div class="card-dots"><span></span><span></span><span></span></div>
-          <h3>fibonacci.moss</h3>
-        </div>
-        <div class="card-body">
-          <pre><code id="fib-card-out"></code></pre>
-        </div>
-        <div class="card-footer">Guard clauses &amp; recursion</div>
-      </div>
-
-      <!-- Colony -->
-      <div class="example-card">
-        <div class="card-header">
-          <div class="card-dots"><span></span><span></span><span></span></div>
-          <h3>colony_creatures.moss</h3>
-        </div>
-        <div class="card-body">
-          <pre><code id="colony-card-out"></code></pre>
-        </div>
-        <div class="card-footer">Prototype-based objects &amp; inheritance</div>
-      </div>
-
-      <!-- Graph -->
-      <div class="example-card">
-        <div class="card-header">
-          <div class="card-dots"><span></span><span></span><span></span></div>
-          <h3>graph_traverse.moss</h3>
-        </div>
-        <div class="card-body">
-          <pre><code id="graph-card-out"></code></pre>
-        </div>
-        <div class="card-footer">First-class graphs &amp; BFS traversal</div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -268,18 +182,29 @@ while i &lt;= 10:
 <!-- ═════════════════════════ CODE SOURCES ════════════════════════════════ -->
 
 <script type="text/x-moss" id="guide">
-~~ colony with methods and prototypal inheritance
+~~ one-liner basics
+
+sprout name  <~ "moss"                       ~~ declare a variable
+sprout count <~ 0                            ~~ numbers work too
+grow double(x)   [~ harvest x * 2 ~]        ~~ one-line function
+grow greet(x)    [~ harvest "hi, " + x ~]   ~~ string return
+
+bloom double(6)                              ~~ prints: 12
+bloom greet(name)                            ~~ prints: hi, moss
+count == 0 => bloom "just started"          ~~ guard clause
+
+~~ colony with prototypal inheritance
 
 sprout creature <~ colony [~
     name  <~ "creature"
     lives <~ 3
 
-    grow isAlive() [~
-        harvest self.lives > 0
-    ~]
-
     grow describe() [~
         bloom self.name
+    ~]
+
+    grow isAlive() [~
+        harvest self.lives > 0
     ~]
 ~]
 
@@ -309,73 +234,29 @@ cycle i <= 10 [~
 ~]
 </script>
 
-<script type="text/x-moss" id="fib-card">
-~~ Fibonacci — guard clauses, recursion
+<script type="text/x-js" id="fib-js">
+function fib(n) {
+  if (n <= 1) return n;
+  return fib(n - 1) + fib(n - 2);
+}
 
-grow fib(n) [~
-    n <= 1 => harvest n
-    harvest fib(n - 1) + fib(n - 2)
-~]
-
-sprout i <~ 0
-cycle i <= 10 [~
-    bloom fib(i)
-    i <~ i + 1
-~]
+let i = 0;
+while (i <= 10) {
+  console.log(fib(i));
+  i++;
+}
 </script>
 
-<script type="text/x-moss" id="colony-card">
-~~ Colonies and prototypal inheritance
+<script type="text/x-py" id="fib-py">
+def fib(n):
+    if n <= 1:
+        return n
+    return fib(n - 1) + fib(n - 2)
 
-sprout creature <~ colony [~
-    name  <~ "creature"
-    lives <~ 3
-
-    grow describe() [~
-        bloom self.name
-    ~]
-
-    grow isAlive() [~
-        harvest self.lives > 0
-    ~]
-~]
-
-sprout wolf <~ creature grows [~
-    name  <~ "wolf"
-    lives <~ 5
-
-    grow howl() [~
-        bloom "Awoooo!"
-    ~]
-~]
-
-wolf.describe()
-wolf.howl()
-wolf.isAlive() => bloom "The wolf lives on."
-</script>
-
-<script type="text/x-moss" id="graph-card">
-~~ Graph traversal — BFS spread/reach
-
-sprout forest <~ graph [~
-    node root
-    node oak
-    node pine
-    node fern
-    node moss
-    edge root -> oak   weight 3
-    edge root -> pine  weight 5
-    edge oak  -> fern  weight 2
-    edge pine -> moss  weight 1
-    edge fern -> moss  weight 4
-~]
-
-bloom "BFS from root:"
-spread forest from root [~
-    reach current [~
-        bloom current
-    ~]
-~]
+i = 0
+while i <= 10:
+    print(fib(i))
+    i += 1
 </script>
 
 </body>
